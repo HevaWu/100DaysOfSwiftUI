@@ -11,9 +11,29 @@ struct ContentView: View {
     var body: some View {
         // Form have limitation on 10
         Form {
-            Text("Hello, world!")
-            Text("Hello, world!")
-            Text("Hello, world!")
+            Group {
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+            }
+            
+            Group {
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+                Text("Hello, world!")
+            }
         }
     }
 }
