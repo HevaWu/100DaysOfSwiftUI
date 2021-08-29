@@ -9,8 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        // Form have limitation on 10
+        Form {
+            Text("Hello, world!")
+            Text("Hello, world!")
+            Text("Hello, world!")
+        }
     }
 }
 
