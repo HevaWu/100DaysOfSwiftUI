@@ -8,15 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    let students = ["Alice", "Bob", "Henry"]
-    @State private var selectedStudent = "Alice"
-    
     var body: some View {
-        Picker("Please Select Students", selection: $selectedStudent) {
-            ForEach(0..<students.count) {
-                Text(students[$0])
-            }
-        }
+        Text("Hello World")
     }
 }
 
