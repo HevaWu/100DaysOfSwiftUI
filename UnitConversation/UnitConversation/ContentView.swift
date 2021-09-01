@@ -20,12 +20,11 @@ struct ContentView: View {
             return inputNum
         }
         
-        let inputToZero = inputNum / unitToZero[inputUnit]
-        return inputToZero * unitToZero[outputUnit]
+        let inputToZero = Measurement(value: inputNum, unit: units[inputUnit])
+        return inputToZero.converted(to: units[outputUnit]).value
     }
     
-    let unitToZero = [1, 0.001, 3.281, 1.094, 0.0006214]
-    let units = ["meters", "kilometers", "feet", "yard", "miles"]
+    let units = [UnitLength.meters, UnitLength.kilometers, UnitLength.feet, UnitLength.yards, UnitLength.miles]
     
     var body: some View {
         NavigationView {
@@ -36,7 +35,7 @@ struct ContentView: View {
                     
                     Picker("Input Length", selection: $inputUnit) {
                         ForEach(0..<units.count) {
-                            Text("\(units[$0])")
+                            Text("\(units[$0].symbol)")
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
@@ -47,7 +46,7 @@ struct ContentView: View {
                     
                     Picker("Output Length", selection: $outputUnit) {
                         ForEach(0..<units.count) {
-                            Text("\(units[$0])")
+                            Text("\(units[$0].symbol)")
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
