@@ -24,7 +24,7 @@ struct ContentView: View {
         return inputToZero * unitToZero[outputUnit]
     }
     
-    let unitToZero = [1, 1000, 3.281, 1.094, 0.0006214]
+    let unitToZero = [1, 0.001, 3.281, 1.094, 0.0006214]
     let units = ["meters", "kilometers", "feet", "yard", "miles"]
     
     var body: some View {
