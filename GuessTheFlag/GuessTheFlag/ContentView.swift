@@ -9,22 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            HStack {
-                Text("a00")
-                Text("a01")
-                Text("a02")
-            }
-            HStack {
-                Text("a10")
-                Text("a11")
-                Text("a12")
-            }
-            HStack {
-                Text("a20")
-                Text("a21")
-                Text("a22")
-            }
+        ZStack {
+            Color(red: 1, green: 0.8, blue: 0).frame(width: 200, height: 200)
+            Text("Hello World")
         }
     }
 }
