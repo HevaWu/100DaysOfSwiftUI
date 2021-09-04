@@ -31,7 +31,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.black]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.black]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 30) {
@@ -58,6 +58,11 @@ struct ContentView: View {
                             .shadow(color: .black, radius: 2)
                     })
                 }
+                
+                Text("Current Score: \(score)")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+                    .fontWeight(.black)
             }
         }
         .alert(isPresented: $showingScore, content: {
