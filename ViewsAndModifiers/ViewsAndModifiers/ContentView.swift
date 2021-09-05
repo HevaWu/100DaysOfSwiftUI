@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    var text1: some View {
+        Text("Hello Word!")
+    }
+    let text2 = Text("Hello Word Hello!")
+    
     var body: some View {
         VStack {
-            Text("Hello Word!")
-                .font(.largeTitle)
-            Text("Hello Word!")
-                .blur(radius: 0)
-            Text("Hello Word!")
-            Text("Hello Word!")
+            text1
+                .foregroundColor(.red)
+            text2
+                .foregroundColor(.green)
+            text1
+                .foregroundColor(.yellow)
         }
-        .font(.title)
-        .blur(radius: 5)
-        
     }
 }
 
