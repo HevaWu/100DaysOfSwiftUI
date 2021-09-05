@@ -7,20 +7,25 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var text1: some View {
-        Text("Hello Word!")
-    }
-    let text2 = Text("Hello Word Hello!")
+struct CapsuleText: View {
+    var text: String
     
     var body: some View {
+        Text(text)
+            .font(.largeTitle)
+            .padding()
+            .background(Color.yellow)
+            .clipShape(Capsule())
+    }
+}
+
+struct ContentView: View {
+
+    var body: some View {
         VStack {
-            text1
-                .foregroundColor(.red)
-            text2
+            CapsuleText(text: "First")
+            CapsuleText(text: "Second")
                 .foregroundColor(.green)
-            text1
-                .foregroundColor(.yellow)
         }
     }
 }
