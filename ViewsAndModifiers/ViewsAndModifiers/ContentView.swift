@@ -7,39 +7,27 @@
 
 import SwiftUI
 
-struct GridStack<Content: View>: View {
-    let rows: Int
-    let cols: Int
-    let content: (Int, Int) -> Content
-    
-    var body: some View {
-        VStack {
-            ForEach(0..<rows) { row in
-                HStack {
-                    ForEach(0..<cols) { col in
-                        self.content(row, col)
-                    }
-                }
-            }
-        }
+struct TitleView: ViewModifier {
+
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.blue)
     }
     
-    init(rows: Int, cols: Int, content: @escaping (Int, Int) -> Content) {
-        self.rows = rows
-        self.cols = cols
-        self.content = content
+}
+
+extension View {
+    func titleView() -> some View {
+        self.modifier(TitleView())
     }
 }
 
 struct ContentView: View {
 
     var body: some View {
-        GridStack(rows: 4, cols: 4) { row, col in
-            HStack {
-                Image(systemName: "\(row * 4 + col).circle")
-                Text("R\(row) C\(col)")
-            }
-        }
+        Text("Hello World!")
+            .titleView()
     }
 }
 
