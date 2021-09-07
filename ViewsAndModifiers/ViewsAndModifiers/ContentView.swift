@@ -7,27 +7,41 @@
 
 import SwiftUI
 
-struct TitleView: ViewModifier {
-
-    func body(content: Content) -> some View {
-        content
-            .font(.largeTitle)
-            .foregroundColor(.blue)
-    }
-    
-}
-
-extension View {
-    func titleView() -> some View {
-        self.modifier(TitleView())
-    }
-}
-
 struct ContentView: View {
+    
+    @State private var agreeToTerms = false
+    @State private var agreeToPrivacyPolicy = false
+    @State private var agreeToEmails = false
 
     var body: some View {
-        Text("Hello World!")
-            .titleView()
+        let agreeToAll = Binding<Bool>(
+            get: {
+                agreeToTerms && agreeToPrivacyPolicy && agreeToEmails
+            },
+            set: {
+                self.agreeToTerms = $0
+                self.agreeToPrivacyPolicy = $0
+                self.agreeToEmails = $0
+            }
+        )
+        
+        return VStack {
+            Toggle(isOn: $agreeToTerms, label: {
+                Text("Agree To Terms")
+            })
+            
+            Toggle(isOn: $agreeToPrivacyPolicy, label: {
+                Text("Agree To PrivacyPolicy")
+            })
+            
+            Toggle(isOn: $agreeToEmails, label: {
+                Text("Agree To Emails")
+            })
+            
+            Toggle(isOn: agreeToAll, label: {
+                Text("Agree To All")
+            })
+        }
     }
 }
 
