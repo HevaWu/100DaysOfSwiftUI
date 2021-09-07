@@ -79,16 +79,14 @@ struct ContentView: View {
     }
     
     func userTapped(_ userPicked: Int) {
-        var userIsWin: Bool = false
+        let userIsWin: Bool = {
+            if userPicked == (pcpicked + 1) % 3 {
+                return true
+            }
+            return false
+        }()
         
-        if (pcpicked == 0 && userPicked == 1)
-            || (pcpicked == 1 && userPicked == 2)
-            || (pcpicked == 2 && userPicked == 0) {
-            userIsWin = true
-        }
-
-        if (shouldWin && userIsWin)
-            || (!shouldWin && !userIsWin) {
+        if shouldWin == userIsWin {
             score += 1
         } else {
             score -= 1
