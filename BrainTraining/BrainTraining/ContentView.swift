@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+struct TitleWithMessage: View {
+    let title: String
+    let message: String
+    
+    var body: some View {
+        HStack(spacing: 10) {
+            Text(title)
+            Text(message)
+                .foregroundColor(.green)
+                .fontWeight(.bold)
+        }
+    }
+}
+
 struct ContentView: View {
     @State private var score = 0
     @State private var pcpicked = Int.random(in: 0..<3)
@@ -19,28 +33,22 @@ struct ContentView: View {
     var body: some View {
         Form {
             Section(header: Text("Player's Score")) {
-                HStack(spacing: 10) {
-                    Text("Current Score is: ")
-                    Text("\(score)")
-                        .foregroundColor(.green)
-                        .fontWeight(.bold)
-                }
+                TitleWithMessage(
+                    title: "Current Score is: ",
+                    message: "\(score)"
+                )
             }
             
             Section(header: Text("PC's Choice")) {
-                HStack(spacing: 10) {
-                    Text("PC's Move:")
-                    Text("\(choices[pcpicked])")
-                        .foregroundColor(.green)
-                        .fontWeight(.bold)
-                }
+                TitleWithMessage(
+                    title: "PC's Move:",
+                    message: choices[pcpicked]
+                )
                 
-                HStack(spacing: 10) {
-                    Text("Prompt Win?")
-                    Text("\(shouldWin.description)")
-                        .foregroundColor(.green)
-                        .fontWeight(.bold)
-                }
+                TitleWithMessage(
+                    title: "Prompt Win?",
+                    message: shouldWin.description
+                )
             }
             
             Section(header: Text("Your Choice")) {
