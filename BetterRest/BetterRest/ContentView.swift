@@ -15,7 +15,7 @@ struct ContentView: View {
         let tomorrow = Date().addingTimeInterval(86400)
         let range = now...tomorrow
         
-        DatePicker("Please enter a date", selection: $wakeUp, in: range, displayedComponents: .hourAndMinute)
+        DatePicker("Please enter a date", selection: $wakeUp, in: range)
             .labelsHidden()
     }
 }
