@@ -16,6 +16,9 @@ struct ContentView: View {
     @State private var alertMessage = ""
     @State private var showAlert = false
     
+    @State private var showBedTime = false
+    @State private var sleepTime = ""
+    
     static var defaultWakeTime: Date {
         var components = DateComponents()
         components.hour = 7
@@ -50,6 +53,18 @@ struct ContentView: View {
                     }
                     .pickerStyle(InlinePickerStyle())
                 }
+                
+                if showBedTime {
+                    Section(header: Text("Recommended Bedtime")) {
+                        HStack(spacing: 10) {
+                            Text("Bedtime: ")
+                            
+                            Text(sleepTime)
+                                .font(.largeTitle)
+                                .foregroundColor(.green)
+                        }
+                    }
+                }
             }
             .navigationTitle("BetterRest")
             .navigationBarItems(
@@ -79,19 +94,22 @@ struct ContentView: View {
         do {
             let prediction = try model.prediction(input: SleepCalculatorInput(wake: Double(hour + minute), estimatedSleep: sleepAmount, coffee: Double(coffeeAmount)))
             
-            let sleepTime = wakeUp - prediction.actualSleep
+            let _sleepTime = wakeUp - prediction.actualSleep
             
             let formatter = DateFormatter()
             formatter.timeStyle = .short
             
+            sleepTime = formatter.string(from: _sleepTime)
+            
             alertTitle = "Your ideal bedtime is ... "
-            alertMessage = formatter.string(from: sleepTime)
+            alertMessage = sleepTime
             
         } catch {
             alertTitle = "Error"
-            alertMessage = "Sorry, THere was a problem calculating your bedtime."
+            alertMessage = "Sorry, There was a problem calculating your bedtime."
         }
         
+        showBedTime = true
         showAlert = true
     }
 }
