@@ -9,22 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        List {
-            Section(header: Text("Section 1")) {
-                
-                Text("Hello, world!")
-            }
-            
-            Section(header: Text("Section 2")) {
-                ForEach(0..<5) { _ in
-                    Text("Hello, world!")
-                }
-            }
-            
-            Section(header: Text("Section 3")) {
-                
-                Text("Hello, world!")
-            }
+        List(0..<5) { _ in
+            Text("Hello, world!")
         }
         .listStyle(GroupedListStyle())
     }
