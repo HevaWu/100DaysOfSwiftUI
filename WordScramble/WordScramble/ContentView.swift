@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    let people = ["Alice", "Bob", "Cindy", "Fare"]
-    
     var body: some View {
-        if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: <#T##String?#>) {
-            if let fileContent = try? String(contentsOf: fileURL) {
-                // ... do something
-            }
-        }
+        let word: String = "swift"
+        let checker = UITextChecker()
+        let range = NSRange(location: 0, length: word.utf16.count)
+        let mispelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
+        let allGood = mispelledRange.location == NSNotFound
         
         return Text("Hello, world! ")
     }
