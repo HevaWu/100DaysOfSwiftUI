@@ -11,10 +11,13 @@ struct ContentView: View {
     let people = ["Alice", "Bob", "Cindy", "Fare"]
     
     var body: some View {
-        List(people, id: \.self) {
-            Text("Hello, world! \($0)")
+        if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: <#T##String?#>) {
+            if let fileContent = try? String(contentsOf: fileURL) {
+                // ... do something
+            }
         }
-        .listStyle(GroupedListStyle())
+        
+        return Text("Hello, world! ")
     }
 }
 
