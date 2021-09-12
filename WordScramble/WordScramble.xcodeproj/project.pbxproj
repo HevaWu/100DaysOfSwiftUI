@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D588352B26EE115300BE2728 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = D588352A26EE115300BE2728 /* start.txt */; };
 		D59C111526ECD490003D9157 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59C111426ECD490003D9157 /* AppDelegate.swift */; };
 		D59C111726ECD490003D9157 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59C111626ECD490003D9157 /* SceneDelegate.swift */; };
 		D59C111926ECD490003D9157 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59C111826ECD490003D9157 /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D588352A26EE115300BE2728 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 		D59C111126ECD490003D9157 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D59C111426ECD490003D9157 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D59C111626ECD490003D9157 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				D59C111A26ECD494003D9157 /* Assets.xcassets */,
 				D59C111F26ECD494003D9157 /* LaunchScreen.storyboard */,
 				D59C112226ECD494003D9157 /* Info.plist */,
+				D588352A26EE115300BE2728 /* start.txt */,
 				D59C111C26ECD494003D9157 /* Preview Content */,
 			);
 			path = WordScramble;
@@ -133,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D59C112126ECD494003D9157 /* LaunchScreen.storyboard in Resources */,
+				D588352B26EE115300BE2728 /* start.txt in Resources */,
 				D59C111E26ECD494003D9157 /* Preview Assets.xcassets in Resources */,
 				D59C111B26ECD494003D9157 /* Assets.xcassets in Resources */,
 			);
