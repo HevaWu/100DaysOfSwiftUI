@@ -34,7 +34,20 @@ struct ContentView: View {
             .alert(isPresented: $showError, content: {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
             })
+            .navigationBarItems(
+                leading: Button("Reset Start Word", action: resetGame)
+            )
         }
+    }
+    
+    func resetGame() {
+        startGame()
+        usedWords = []
+        newWord = ""
+        
+        errorTitle = ""
+        errorMessage = ""
+        showError = false
     }
     
     func wordError(title: String, message: String) {
