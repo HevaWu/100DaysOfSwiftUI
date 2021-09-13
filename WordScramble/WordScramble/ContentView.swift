@@ -43,6 +43,11 @@ struct ContentView: View {
         showError = true
     }
     
+    // longer than 3 letters
+    func isLongerThanThree(word: String) -> Bool {
+        return word.count >= 3
+    }
+    
     // is atualy english word or not
     func isRealWord(word: String) -> Bool {
         let checker = UITextChecker()
@@ -87,7 +92,12 @@ struct ContentView: View {
         
         guard !answer.isEmpty else { return }
         
-        guard isOriginal(word: answer) else {
+        guard isLongerThanThree(word: answer) else {
+            wordError(title: "Word shorter than 3 letters", message: "Input more letters")
+            return
+        }
+        
+        guard isOriginal(word: answer) && answer != rootWord else {
             wordError(title: "Word used already", message: "Be more original")
             return
         }
