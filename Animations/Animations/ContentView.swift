@@ -8,27 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var animationAmount: Double = 0.0
+    @State private var enabled = false
     
     var body: some View {
         Button("Tap Me") {
-            withAnimation(
-                Animation.interpolatingSpring(stiffness: 5, damping: 1)
-            ) {
-                self.animationAmount = 360
-            }
+            enabled.toggle()
         }
-        .padding(50)
-        .background(Color.red)
+        .frame(width: 200, height: 200)
+        .background(enabled ? Color.red : Color.blue)
+        .animation(.default)
         .foregroundColor(.white)
-        .clipShape(Circle())
-        .rotation3DEffect(
-            .degrees(animationAmount),
-            axis: (x: 0.0, y: 0.0, z: 1.0)
-//            anchor: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/,
-//            anchorZ: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/,
-//            perspective: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/
-        )
+        .clipShape(RoundedRectangle(cornerRadius: enabled ? 60 : 0))
+        .animation(.interpolatingSpring(stiffness: 3, damping: 1))
     }
 }
 
