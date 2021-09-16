@@ -42,7 +42,9 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     
     @State private var score = 0
+    
     @State private var rotateAmount: Double = 0.0
+    @State private var opacityAmount: Double = 1.0
     
     var body: some View {
         ZStack {
@@ -72,6 +74,7 @@ struct ContentView: View {
                         isCorrectFlag ? .degrees(rotateAmount) : .zero,
                         axis: (x: 0.0, y: 1.0, z: 0.0)
                     )
+                    .opacity(isCorrectFlag ? 1 : opacityAmount)
                 }
                 
                 Text("Current Score: \(score)")
@@ -88,15 +91,13 @@ struct ContentView: View {
     }
     
     func flagTapped(_ index: Int) {
-        // reset rotateAmount
-        rotateAmount = 0.0
-        
         if index == correctIndex {
             scoreTitle = "Correct"
             score += 1
             
             withAnimation {
                 rotateAmount = 360
+                opacityAmount = 0.25
             }
         } else {
             scoreTitle = "Wrong. That's the flag of \(countries[index])"
@@ -108,6 +109,10 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         correctIndex = Int.random(in: 0...2)
+        
+        // reset rotateAmount
+        rotateAmount = 0.0
+        opacityAmount = 1.0
     }
 }
 
