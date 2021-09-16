@@ -21,6 +21,29 @@ struct FlagImage: View {
     }
 }
 
+struct WrongFlagViewModifier: ViewModifier {
+    var isWrongFlag: Bool
+    var scaleAmount: CGFloat = 1.0
+    
+    func body(content: Content) -> some View {
+        if isWrongFlag {
+            content
+                .overlay(
+                    Capsule()
+                        .stroke(Color.red, lineWidth: 2)
+                        .scaleEffect(scaleAmount)
+                        .opacity(Double(2 - scaleAmount))
+                        .animation(
+                            Animation.easeInOut(duration: 1)
+                                .repeatCount(3, autoreverses: false)
+                        )
+                )
+        } else {
+            content
+        }
+    }
+}
+
 struct ContentView: View {
     @State private var countries = [
         "Estonia",
@@ -45,6 +68,9 @@ struct ContentView: View {
     
     @State private var rotateAmount: Double = 0.0
     @State private var opacityAmount: Double = 1.0
+    
+    @State private var scaleWrongAmount: CGFloat = 1.0
+    @State private var tappedWrong = false
     
     var body: some View {
         ZStack {
@@ -75,6 +101,12 @@ struct ContentView: View {
                         axis: (x: 0.0, y: 1.0, z: 0.0)
                     )
                     .opacity(isCorrectFlag ? 1 : opacityAmount)
+                    .modifier(WrongFlagViewModifier(isWrongFlag: tappedWrong, scaleAmount: scaleWrongAmount))
+                    .onAppear(perform: {
+                        if tappedWrong {
+                            scaleWrongAmount = 2
+                        }
+                    })
                 }
                 
                 Text("Current Score: \(score)")
@@ -101,6 +133,8 @@ struct ContentView: View {
             }
         } else {
             scoreTitle = "Wrong. That's the flag of \(countries[index])"
+            
+            tappedWrong = true
         }
         
         showingScore = true
@@ -110,9 +144,11 @@ struct ContentView: View {
         countries.shuffle()
         correctIndex = Int.random(in: 0...2)
         
-        // reset rotateAmount
+        // reset animation
         rotateAmount = 0.0
         opacityAmount = 1.0
+        tappedWrong = false
+        scaleWrongAmount = 1.0
     }
 }
 
