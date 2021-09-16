@@ -42,6 +42,7 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     
     @State private var score = 0
+    @State private var rotateAmount: Double = 0.0
     
     var body: some View {
         ZStack {
@@ -60,11 +61,17 @@ struct ContentView: View {
                 }
                 
                 ForEach(0..<3) { number in
+                    let isCorrectFlag = number == correctIndex
+                    
                     Button(action: {
                         flagTapped(number)
                     }, label: {
                         FlagImage(imageName: self.countries[number])
                     })
+                    .rotation3DEffect(
+                        isCorrectFlag ? .degrees(rotateAmount) : .zero,
+                        axis: (x: 0.0, y: 1.0, z: 0.0)
+                    )
                 }
                 
                 Text("Current Score: \(score)")
@@ -81,9 +88,16 @@ struct ContentView: View {
     }
     
     func flagTapped(_ index: Int) {
+        // reset rotateAmount
+        rotateAmount = 0.0
+        
         if index == correctIndex {
             scoreTitle = "Correct"
             score += 1
+            
+            withAnimation {
+                rotateAmount = 360
+            }
         } else {
             scoreTitle = "Wrong. That's the flag of \(countries[index])"
         }
