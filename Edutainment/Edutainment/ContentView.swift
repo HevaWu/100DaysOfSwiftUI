@@ -50,12 +50,12 @@ struct ContentView: View {
         
         return paths
             .compactMap { imageURL in
-            UIImage(contentsOfFile: imageURL.path)
-        }
+                UIImage(contentsOfFile: imageURL.path)
+            }
     }()
     
     @State private var currentQuestionIndex = -1
-        
+    
     @State private var answer = ""
     @State private var score = 0
     
@@ -64,7 +64,11 @@ struct ContentView: View {
     @State private var showAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
-        
+    
+    // Animation
+    
+    @State private var startButtonScaleAmount: CGFloat = 1
+    
     // MARK: - Game View
     var gameView: some View {
         NavigationView {
@@ -142,6 +146,7 @@ struct ContentView: View {
     
     func clearState() {
         questionArr = [Question]()
+        currentQuestionIndex = -1
         answer = ""
         score = 0
         showScore = false
@@ -227,6 +232,8 @@ struct ContentView: View {
     }
     
     func startGame() {
+        clearState()
+        
         let questionCount = questionIndex == 3 ? maxQuestionCount : (Int(questionCountList[questionIndex]) ?? maxQuestionCount)
         
         for _ in 0..<questionCount {
