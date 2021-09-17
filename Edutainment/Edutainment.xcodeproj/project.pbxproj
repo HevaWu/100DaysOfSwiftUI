@@ -13,6 +13,7 @@
 		D542017926F4B52B0057ACC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D542017826F4B52B0057ACC8 /* Assets.xcassets */; };
 		D542017C26F4B52B0057ACC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D542017B26F4B52B0057ACC8 /* Preview Assets.xcassets */; };
 		D542017F26F4B52B0057ACC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D542017D26F4B52B0057ACC8 /* LaunchScreen.storyboard */; };
+		D54201ED26F4E2090057ACC8 /* KenneyResources in Resources */ = {isa = PBXBuildFile; fileRef = D54201EC26F4E2090057ACC8 /* KenneyResources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D542017B26F4B52B0057ACC8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D542017E26F4B52B0057ACC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D542018026F4B52B0057ACC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D54201EC26F4E2090057ACC8 /* KenneyResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = KenneyResources; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				D542017226F4B5280057ACC8 /* AppDelegate.swift */,
 				D542017426F4B5280057ACC8 /* SceneDelegate.swift */,
 				D542017626F4B5280057ACC8 /* ContentView.swift */,
+				D54201EC26F4E2090057ACC8 /* KenneyResources */,
 				D542017826F4B52B0057ACC8 /* Assets.xcassets */,
 				D542017D26F4B52B0057ACC8 /* LaunchScreen.storyboard */,
 				D542018026F4B52B0057ACC8 /* Info.plist */,
@@ -132,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54201ED26F4E2090057ACC8 /* KenneyResources in Resources */,
 				D542017F26F4B52B0057ACC8 /* LaunchScreen.storyboard in Resources */,
 				D542017C26F4B52B0057ACC8 /* Preview Assets.xcassets in Resources */,
 				D542017926F4B52B0057ACC8 /* Assets.xcassets in Resources */,

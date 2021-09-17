@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Question {
+    var image: UIImage?
+    
     var param1 = 1
     var param2 = 1
     var answer = -1
@@ -38,6 +40,19 @@ struct ContentView: View {
     }
     
     var questionCountList = ["5", "10", "20", "ALL"]
+    
+    var imageResources: [UIImage] = {
+        print("get resources")
+        
+        guard let paths = Bundle.main.urls(forResourcesWithExtension: ".png", subdirectory: "KenneyResources/") else {
+            return [UIImage]()
+        }
+        
+        return paths
+            .compactMap { imageURL in
+            UIImage(contentsOfFile: imageURL.path)
+        }
+    }()
     
     @State private var currentQuestionIndex = -1
         
@@ -86,6 +101,13 @@ struct ContentView: View {
                 
                 List(0..<questionArr.count) { index in
                     HStack {
+                        if let image = questionArr[index].image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .padding()
+                        }
+                        
                         Text("\(questionArr[index].param1) x \(questionArr[index].param2) = ")
                         
                         if index == currentQuestionIndex {
@@ -208,10 +230,11 @@ struct ContentView: View {
         let questionCount = questionIndex == 3 ? maxQuestionCount : (Int(questionCountList[questionIndex]) ?? maxQuestionCount)
         
         for _ in 0..<questionCount {
+            let image = imageResources.randomElement()
             let first = Int.random(in: 1..<difficulty)
             let second = Int.random(in: 1..<difficulty)
             
-            questionArr.append(Question(param1: first, param2: second))
+            questionArr.append(Question(image: image, param1: first, param2: second))
         }
         
         didGameStart = true
