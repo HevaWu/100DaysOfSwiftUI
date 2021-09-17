@@ -7,25 +7,178 @@
 
 import SwiftUI
 
+struct Question {
+    var param1 = 1
+    var param2 = 1
+    var answer = -1
+}
+
 struct ContentView: View {
-    @State private var difficult = 5
-    @State private var questionCount = 3
+    // setting view property
+    @State private var difficulty = 5
+    @State private var questionIndex = 3
     
-    @State private var showSettingView = true
+    @State private var questionArr = [Question]()
+    
+    @State private var didGameStart = false
+    
+    var maxQuestionCount: Int {
+        return difficulty * difficulty
+    }
     
     var questionCountList = ["5", "10", "20", "ALL"]
+    
+    @State private var currentQuestionIndex = -1
+        
+    @State private var answer = ""
+    @State private var score = 0
+    
+    @State private var showScore = false
+    
+    @State private var showAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+        
+    // MARK: - Game View
+    var gameView: some View {
+        NavigationView {
+            VStack {
+                HStack {
+                    Button(action: {
+                        showScore.toggle()
+                        countUserScore()
+                    }, label: {
+                        Text(showScore ? "Hide Current Score" : "Show Current Score")
+                    })
+                    .padding(.horizontal)
+                    .frame(height: 50)
+                    .background(Color.orange)
+                    .foregroundColor(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    
+                    Button(action: {
+                        backToSettings()
+                    }, label: {
+                        Text("Back to Settings")
+                    })
+                    .padding(.horizontal)
+                    .frame(height: 50)
+                    .background(Color.orange)
+                    .foregroundColor(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    
+                    Button(action: {
+                        resetGame()
+                    }, label: {
+                        Text("Reset Game")
+                    })
+                    .padding(.horizontal)
+                    .frame(height: 50)
+                    .background(Color.orange)
+                    .foregroundColor(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+                
+                if showScore {
+                    Text("Your Score is: \(score)")
+                        .padding(.vertical)
+                        .font(.title)
+                }
+                
+                List(0..<questionArr.count) { index in
+                    HStack {
+                        Text("\(questionArr[index].param1) x \(questionArr[index].param2) = ")
+                        
+                        if index == currentQuestionIndex {
+                            TextField("Input Your Answer at Here", text: $answer, onCommit: {
+                                storeAnswer()
+                            })
+                            .keyboardType(.decimalPad)
+                        } else {
+                            Button(action: {
+                                currentQuestionIndex = index
+                            }, label: {
+                                if questionArr[index].answer == -1 {
+                                    Text("?")
+                                } else {
+                                    Text("\(questionArr[index].answer)")
+                                }
+                            })
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Game is running ... ")
+            .alert(isPresented: $showAlert, content: {
+                Alert(
+                    title: Text(alertTitle),
+                    message: Text(alertMessage),
+                    dismissButton: .default(Text("Back to Game?"))
+                )
+            })
+        }
+    }
+    
+    func clearState() {
+        questionArr = [Question]()
+        answer = ""
+        score = 0
+        showScore = false
+        showAlert = false
+        alertTitle = ""
+        alertMessage = ""
+    }
+    
+    func backToSettings() {
+        didGameStart = false
+        clearState()
+    }
+    
+    func resetGame() {
+        clearState()
+        startGame()
+    }
+    
+    func storeAnswer() {
+        if let val = Int(answer) {
+            questionArr[currentQuestionIndex].answer = val
+        } else {
+            showAlert(title: "Error", message: "Please input valid digit.")
+        }
+        
+        answer = ""
+        currentQuestionIndex = -1
+    }
+    
+    func showAlert(title: String, message: String) {
+        showAlert = true
+        alertTitle = title
+        alertMessage = message
+    }
+    
+    func countUserScore() {
+        score = 0
+        
+        for i in 0..<questionArr.count {
+            if questionArr[i].param1 * questionArr[i].param2 == questionArr[i].answer {
+                score += 1
+            }
+        }
+    }
+    
+    // MARK: - Setting View
     
     var settingView: some View {
         NavigationView {
             VStack {
                 Form {
                     Section(header: Text("Define Difficulty")) {
-                        Stepper("Up to \(difficult)", value: $difficult, in: 1...12)
+                        Stepper("Up to \(difficulty)", value: $difficulty, in: 1...12)
                     }
                     
                     Section(header: Text("How many questions?")) {
                         
-                        Picker("Question Count", selection: $questionCount) {
+                        Picker("Question Count", selection: $questionIndex) {
                             ForEach(0..<questionCountList.count) {
                                 Text("\(questionCountList[$0])")
                             }
@@ -52,12 +205,29 @@ struct ContentView: View {
         }
     }
     
-    var body: some View {
-        settingView
+    func startGame() {
+        let questionCount = questionIndex == 3 ? maxQuestionCount : (Int(questionCountList[questionIndex]) ?? maxQuestionCount)
+        
+        for _ in 0..<questionCount {
+            let first = Int.random(in: 1..<difficulty)
+            let second = Int.random(in: 1..<difficulty)
+            
+            questionArr.append(Question(param1: first, param2: second))
+        }
+        
+        didGameStart = true
+        
+        print("tapped start game!")
     }
     
-    func startGame() {
-        print("tapped start game!")
+    // MARK: - Body
+    
+    var body: some View {
+        if didGameStart {
+            gameView
+        } else {
+            settingView
+        }
     }
 }
 
