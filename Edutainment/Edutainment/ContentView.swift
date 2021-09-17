@@ -13,6 +13,17 @@ struct Question {
     var answer = -1
 }
 
+struct OrangeButtonViewModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal)
+            .frame(height: 50)
+            .background(Color.orange)
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+}
+
 struct ContentView: View {
     // setting view property
     @State private var difficulty = 5
@@ -50,33 +61,21 @@ struct ContentView: View {
                     }, label: {
                         Text(showScore ? "Hide Current Score" : "Show Current Score")
                     })
-                    .padding(.horizontal)
-                    .frame(height: 50)
-                    .background(Color.orange)
-                    .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .modifier(OrangeButtonViewModifier())
                     
                     Button(action: {
                         backToSettings()
                     }, label: {
                         Text("Back to Settings")
                     })
-                    .padding(.horizontal)
-                    .frame(height: 50)
-                    .background(Color.orange)
-                    .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .modifier(OrangeButtonViewModifier())
                     
                     Button(action: {
                         resetGame()
                     }, label: {
                         Text("Reset Game")
                     })
-                    .padding(.horizontal)
-                    .frame(height: 50)
-                    .background(Color.orange)
-                    .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .modifier(OrangeButtonViewModifier())
                 }
                 
                 if showScore {
