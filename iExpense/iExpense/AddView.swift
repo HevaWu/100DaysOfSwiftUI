@@ -30,6 +30,16 @@ struct AddView: View {
                 TextField("Amount", text: $amount)
             }
             .navigationBarTitle("Add new expense")
+            .navigationBarItems(
+                trailing:
+                    Button("Save") {
+                        if let actualAmount = Int(self.amount) {
+                            let item = ExpenseItem(name: name, type: type, amount: actualAmount)
+                            expenses.items.append(item)
+                        }
+    
+                    }
+            )
         }
     }
 }
