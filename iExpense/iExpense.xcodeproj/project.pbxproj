@@ -13,6 +13,7 @@
 		D568584A26F6150700CF5A84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D568584926F6150700CF5A84 /* Assets.xcassets */; };
 		D568584D26F6150700CF5A84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D568584C26F6150700CF5A84 /* Preview Assets.xcassets */; };
 		D568585026F6150700CF5A84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D568584E26F6150700CF5A84 /* LaunchScreen.storyboard */; };
+		D568585826F74AF900CF5A84 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568585726F74AF900CF5A84 /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D568584C26F6150700CF5A84 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D568584F26F6150700CF5A84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D568585126F6150700CF5A84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D568585726F74AF900CF5A84 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				D568584326F6150400CF5A84 /* AppDelegate.swift */,
 				D568584526F6150400CF5A84 /* SceneDelegate.swift */,
 				D568584726F6150400CF5A84 /* ContentView.swift */,
+				D568585726F74AF900CF5A84 /* AddView.swift */,
 				D568584926F6150700CF5A84 /* Assets.xcassets */,
 				D568584E26F6150700CF5A84 /* LaunchScreen.storyboard */,
 				D568585126F6150700CF5A84 /* Info.plist */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D568585826F74AF900CF5A84 /* AddView.swift in Sources */,
 				D568584426F6150400CF5A84 /* AppDelegate.swift in Sources */,
 				D568584626F6150400CF5A84 /* SceneDelegate.swift in Sources */,
 				D568584826F6150400CF5A84 /* ContentView.swift in Sources */,
