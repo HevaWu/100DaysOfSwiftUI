@@ -9,19 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            VStack {
-                List(0..<100) { row in
-                    NavigationLink(
-                        destination: Text("Destination \(row)"),
-                        label: {
-                            Text("Hello \(row)")
-                        })
+        Button("Decoded JSON") {
+            let input = """
+                {
+                    "name": "some name",
+                    "address": {
+                        "street": "test street",
+                        "city": "test city"
+                    }
                 }
+                """
+            
+            struct User: Codable {
+                var name: String
+                var address: Address
             }
-            .navigationTitle("Moonshot")
+            
+            struct Address: Codable {
+                var street: String
+                var city: String
+            }
+            
+            if let decoded = try? JSONDecoder().decode(User.self, from: Data(input.utf8)) {
+                print("\(decoded.name), \(decoded.address.street), \(decoded.address.city)")
+            }
         }
-
     }
 }
 
