@@ -63,6 +63,7 @@ struct ContentView: View {
             }
             .navigationBarTitle("iExpense")
             .navigationBarItems(
+                leading: EditButton(),
                 trailing:
                     Button(action: {
                         showAddExpense = true
