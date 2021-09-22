@@ -45,6 +45,18 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(expenses.items) { item in
+                    let labelColor: Color = {
+                        switch item.amount {
+                        case 0..<10:
+                            return .blue
+                        case 10..<100:
+                            return .yellow
+                        default:
+                            // over 100
+                            return .red
+                        }
+                    }()
+                    
                     HStack {
                         VStack(alignment: .leading) {
                             Text(item.name)
@@ -55,6 +67,7 @@ struct ContentView: View {
                         Spacer()
                         
                         Text("\(item.amount)")
+                            .foregroundColor(labelColor)
                     }
                 }
                 .onDelete(perform: { indexSet in
