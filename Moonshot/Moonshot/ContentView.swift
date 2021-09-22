@@ -7,16 +7,30 @@
 
 import SwiftUI
 
+struct CustomTextView: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+    }
+    
+    init(_ text: String) {
+        print("CustomTextView initialized.")
+        self.text = text
+    }
+}
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            GeometryReader { geo in
-                Image("cat")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: geo.size.width)
+        ScrollView(.vertical, content: {
+            VStack(spacing: 10) {
+                ForEach(0..<100) {
+                    CustomTextView("Item \($0)")
+                        .font(.title)
+                }
             }
-        }
+            .frame(maxWidth: .infinity)
+        })
     }
 }
 
