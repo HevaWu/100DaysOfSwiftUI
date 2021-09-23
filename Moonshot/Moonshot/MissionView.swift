@@ -30,27 +30,34 @@ struct MissionView: View {
                         .padding()
                     
                     ForEach(self.astronauts, id: \.role) { crewMember in
-                        HStack {
-                            Image(crewMember.astronaut.id)
-                                .resizable()
-                                .frame(width: 83, height: 60)
-                                .clipShape(Capsule())
-                                .overlay(
-                                    Capsule()
-                                        .stroke(Color.primary, lineWidth: 1)
-                                )
-                            
-                            VStack(alignment: .leading) {
-                                Text(crewMember.astronaut.name)
-                                    .font(.headline)
-                                
-                                Text(crewMember.role)
-                                    .foregroundColor(.secondary)
+                        NavigationLink(
+                            destination: AstronautView(astronaut: crewMember.astronaut),
+                            label: {
+                                HStack {
+                                    Image(crewMember.astronaut.id)
+                                        .resizable()
+                                        .frame(width: 83, height: 60)
+                                        .clipShape(Capsule())
+                                        .overlay(
+                                            Capsule()
+                                                .stroke(Color.primary, lineWidth: 1)
+                                        )
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(crewMember.astronaut.name)
+                                            .font(.headline)
+                                        
+                                        Text(crewMember.role)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    
+                                    
+                                    Spacer()
+                                }
+                                .padding(.horizontal)
                             }
-                            
-                            Spacer()
-                        }
-                        .padding(.horizontal)
+                        )
+                        .buttonStyle(PlainButtonStyle())
                     }
                     
                     Spacer(minLength: 25)
