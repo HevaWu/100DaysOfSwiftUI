@@ -18,6 +18,10 @@ extension Bundle {
         }
         
         let decoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        
         guard let decoded = try? decoder.decode(T.self, from: data) else {
             fatalError("Failed to decode [Astronaut] in \(file)")
         }
