@@ -15,7 +15,7 @@ struct ContentView: View {
         NavigationView {
             List(missions) { mission in
                 NavigationLink(
-                    destination: Text("Detail View"),
+                    destination: MissionView(mission: mission, astronauts: self.astronauts),
                     label: {
                         Image(mission.imageName)
                             .resizable()
