@@ -18,6 +18,7 @@
 		D568588026FC6DFE00CF5A84 /* Astronaut.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568587F26FC6DFE00CF5A84 /* Astronaut.swift */; };
 		D568588226FC6E5E00CF5A84 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568588126FC6E5E00CF5A84 /* Bundle-Decodable.swift */; };
 		D568588426FC704200CF5A84 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568588326FC704200CF5A84 /* Mission.swift */; };
+		D568588826FC7A6700CF5A84 /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568588726FC7A6700CF5A84 /* MissionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		D568587F26FC6DFE00CF5A84 /* Astronaut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Astronaut.swift; sourceTree = "<group>"; };
 		D568588126FC6E5E00CF5A84 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		D568588326FC704200CF5A84 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		D568588726FC7A6700CF5A84 /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				D568586726FB6B3E00CF5A84 /* SceneDelegate.swift */,
 				D568586926FB6B3E00CF5A84 /* ContentView.swift */,
 				D568587F26FC6DFE00CF5A84 /* Astronaut.swift */,
+				D568588726FC7A6700CF5A84 /* MissionView.swift */,
 				D568588326FC704200CF5A84 /* Mission.swift */,
 				D568588126FC6E5E00CF5A84 /* Bundle-Decodable.swift */,
 				D568586B26FB6B4100CF5A84 /* Assets.xcassets */,
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D568588826FC7A6700CF5A84 /* MissionView.swift in Sources */,
 				D568588426FC704200CF5A84 /* Mission.swift in Sources */,
 				D568586626FB6B3E00CF5A84 /* AppDelegate.swift in Sources */,
 				D568586826FB6B3E00CF5A84 /* SceneDelegate.swift in Sources */,
