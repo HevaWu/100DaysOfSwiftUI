@@ -15,6 +15,7 @@ struct MissionView: View {
     
     let mission: Mission
     let astronauts: [CrewMember]
+    let missions: [Mission]
     
     var body: some View {
         GeometryReader { geo in
@@ -34,7 +35,7 @@ struct MissionView: View {
                     
                     ForEach(self.astronauts, id: \.role) { crewMember in
                         NavigationLink(
-                            destination: AstronautView(astronaut: crewMember.astronaut),
+                            destination: AstronautView(astronaut: crewMember.astronaut, missions:  self.missions),
                             label: {
                                 HStack {
                                     Image(crewMember.astronaut.id)
@@ -70,7 +71,7 @@ struct MissionView: View {
         .navigationBarTitle(Text(mission.displayName), displayMode: .inline)
     }
     
-    init(mission: Mission, astronauts: [Astronaut]) {
+    init(mission: Mission, astronauts: [Astronaut], missions: [Mission]) {
         self.mission = mission
         var matches = [CrewMember]()
         for member in mission.crew {
@@ -81,6 +82,7 @@ struct MissionView: View {
             }
         }
         self.astronauts = matches
+        self.missions = missions
     }
 }
 
@@ -89,6 +91,6 @@ struct MissionView_Previews: PreviewProvider {
     static let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
     
     static var previews: some View {
-        MissionView(mission: missions[0], astronauts: astronauts)
+        MissionView(mission: missions[0], astronauts: astronauts, missions: missions)
     }
 }
