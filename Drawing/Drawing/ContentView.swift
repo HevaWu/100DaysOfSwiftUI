@@ -43,9 +43,8 @@ struct Arc: Shape {
 
 struct ContentView: View {
     var body: some View {
-        Arc(startAngle: .degrees(0), endAngle: .degrees(110), clockwise: true)
-            .stroke(Color.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-            .frame(width: 300, height: 300)
+        Circle()
+            .strokeBorder(Color.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
     }
 }
 
