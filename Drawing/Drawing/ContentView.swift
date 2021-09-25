@@ -14,9 +14,11 @@ struct ContentView: View {
             path.addLine(to: CGPoint(x: 100, y: 300))
             path.addLine(to: CGPoint(x: 300, y: 300))
             path.addLine(to: CGPoint(x: 200, y: 100))
-            path.addLine(to: CGPoint(x: 100, y: 300))
         }
-        .stroke(Color.blue.opacity(0.25), lineWidth: 10)
+        .stroke(
+            Color.blue.opacity(0.25),
+            style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round)
+        )
     }
 }
 
