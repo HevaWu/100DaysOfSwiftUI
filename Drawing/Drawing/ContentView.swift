@@ -9,15 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World")
-            .frame(width: 300, height: 300)
-            .border(
+        Capsule()
+            .strokeBorder(
                 ImagePaint(
                     image: Image("bear"),
-                    sourceRect: CGRect(x: 0, y: 0.25, width: 1, height: 0.5),
-                    scale: 1.0),
-                width: 30
-            )
+                    scale: 1),
+                lineWidth: 30)
+            .frame(width: 300, height: 200)
     }
 }
 
