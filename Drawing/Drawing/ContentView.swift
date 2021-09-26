@@ -17,12 +17,16 @@ struct ColorCyclingCircle: View {
                 Circle()
                     .inset(by: CGFloat(value))
                     .strokeBorder(
-                        self.color(for: value, brightness: 1),
+                        LinearGradient(
+                            gradient: Gradient(colors: [
+                                self.color(for: value, brightness: 1),
+                                self.color(for: value, brightness: 0.5),
+                            ]), startPoint: .top, endPoint: .bottom),
                         lineWidth: 2
                     )
-                
             }
         }
+        .drawingGroup()
     }
     
     func color(for value: Int, brightness: Double) -> Color {
