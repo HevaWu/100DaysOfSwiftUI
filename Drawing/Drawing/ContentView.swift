@@ -11,15 +11,8 @@ struct ContentView: View {
     @State private var colorCycle = 0.0
     
     var body: some View {
-        ZStack {
-            Image("bear")
-            
-            Rectangle()
-                .fill(Color.blue)
-                .blendMode(.multiply)
-        }
-        .frame(width: 400, height: 400)
-        .clipped()
+        Image("bear")
+            .colorMultiply(.blue)
     }
 }
 
