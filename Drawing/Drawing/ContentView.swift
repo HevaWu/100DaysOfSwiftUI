@@ -7,36 +7,52 @@
 
 import SwiftUI
 
-struct Trapezoid: Shape {
-    var insetAmount: CGFloat
+struct Checkerboard: Shape {
+    var rows: Int
+    var cols: Int
     
-    var animatableData: CGFloat {
-        get { insetAmount }
-        set { insetAmount = newValue }
+    public var animatableData: AnimatablePair<Double, Double> {
+        get {
+            AnimatablePair(Double(rows), Double(cols))
+        }
+        set {
+            self.rows = Int(newValue.first)
+            self.cols = Int(newValue.second)
+        }
     }
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
-        path.move(to: CGPoint(x: 0, y: rect.maxY))
-        path.addLine(to: CGPoint(x: insetAmount, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX - insetAmount, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: 0, y: rect.maxY))
+        let rowSize = rect.height / CGFloat(rows)
+        let colSize = rect.width / CGFloat(cols)
+        
+        for r in 0..<rows {
+            for c in 0..<cols {
+                if (r + c).isMultiple(of: 2) {
+                    let startX = colSize * CGFloat(c)
+                    let startY = rowSize * CGFloat(r)
+                    
+                    let rect = CGRect(x: startX, y: startY, width: colSize, height: rowSize)
+                    path.addRect(rect)
+                }
+            }
+        }
         
         return path
     }
 }
 
 struct ContentView: View {
-    @State private var insetAmount: CGFloat = 50
+    @State private var rows = 4
+    @State private var cols = 4
     
     var body: some View {
-        Trapezoid(insetAmount: insetAmount)
-            .frame(width: 200, height: 100)
+        Checkerboard(rows: rows, cols: cols)
             .onTapGesture {
-                withAnimation {
-                    self.insetAmount = CGFloat.random(in: 10...90)
+                withAnimation(.linear(duration: 3)) {
+                    self.rows = 8
+                    self.cols = 16
                 }
             }
     }
