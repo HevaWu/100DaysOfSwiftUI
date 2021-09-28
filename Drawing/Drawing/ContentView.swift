@@ -24,10 +24,22 @@ struct Arrow: Shape {
 }
 
 struct ContentView: View {
+    @State private var thickness: CGFloat = 10
+    
     var body: some View {
-        Arrow()
-            .stroke(Color.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-            .frame(width: 300, height: 200)
+        VStack {
+            Spacer(minLength: 30)
+            
+            Arrow()
+                .stroke(Color.blue, style: StrokeStyle(lineWidth: thickness, lineCap: .round, lineJoin: .round))
+                .frame(width: 300, height: 200)
+            
+            Spacer()
+                        
+            Text("Thickness: \(thickness, specifier: "%.2f")")
+            Slider(value: $thickness, in: 10...100)
+        }
+        .padding([.horizontal, .vertical])
     }
 }
 
