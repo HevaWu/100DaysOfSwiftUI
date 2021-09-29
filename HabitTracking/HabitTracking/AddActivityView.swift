@@ -9,7 +9,9 @@ import SwiftUI
 
 struct AddActivityView: View {
     @Environment (\.presentationMode) var presentationMode
+    
     @ObservedObject var activities: Activities
+    var viewTitle = "Add Activity"
     
     @State private var title = ""
     @State private var description = ""
@@ -25,7 +27,7 @@ struct AddActivityView: View {
                     TextField("Input Descriptionn", text: $description)
                 }
             }
-            .navigationTitle("Add/Edit Activity")
+            .navigationTitle(viewTitle)
             .navigationBarItems(
                 trailing: Button("Save", action: {
                     self.addCurrentActivity()

@@ -12,11 +12,17 @@ struct ContentView: View {
     
     @State private var showAddView = false
     
+    @State private var count = 0
+    
     var body: some View {
         NavigationView {
             List(activities.items) { activity in
-                HStack {
-                    Text(activity.title)
+                NavigationLink {
+                    ActivityDetailsView(activity: activity)
+                } label: {
+                    HStack {
+                        Text(activity.title)
+                    }
                 }
             }
             .sheet(

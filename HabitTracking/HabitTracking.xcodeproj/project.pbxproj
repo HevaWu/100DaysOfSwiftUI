@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D53C53E927049DD3003E7C6B /* ActivityDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53C53E827049DD3003E7C6B /* ActivityDetailsView.swift */; };
 		D5A91D452704930F003C1AC9 /* HabitTrackingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A91D442704930F003C1AC9 /* HabitTrackingApp.swift */; };
 		D5A91D472704930F003C1AC9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A91D462704930F003C1AC9 /* ContentView.swift */; };
 		D5A91D4927049313003C1AC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5A91D4827049313003C1AC9 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D53C53E827049DD3003E7C6B /* ActivityDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailsView.swift; sourceTree = "<group>"; };
 		D5A91D412704930F003C1AC9 /* HabitTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A91D442704930F003C1AC9 /* HabitTrackingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTrackingApp.swift; sourceTree = "<group>"; };
 		D5A91D462704930F003C1AC9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				D5A91D442704930F003C1AC9 /* HabitTrackingApp.swift */,
 				D5A91D462704930F003C1AC9 /* ContentView.swift */,
+				D53C53E827049DD3003E7C6B /* ActivityDetailsView.swift */,
 				D5A91D542704941A003C1AC9 /* AddActivityView.swift */,
 				D5A91D52270493A0003C1AC9 /* Activity.swift */,
 				D5A91D4827049313003C1AC9 /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 				D5A91D552704941A003C1AC9 /* AddActivityView.swift in Sources */,
 				D5A91D472704930F003C1AC9 /* ContentView.swift in Sources */,
 				D5A91D452704930F003C1AC9 /* HabitTrackingApp.swift in Sources */,
+				D53C53E927049DD3003E7C6B /* ActivityDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
