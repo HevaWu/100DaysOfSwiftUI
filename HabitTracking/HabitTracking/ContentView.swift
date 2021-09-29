@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var activities = Activities()
+    @ObservedObject var activities = Activities.dummy
     
     @State private var showAddView = false
-    
-    @State private var count = 0
-    
+        
     var body: some View {
         NavigationView {
             List(activities.items) { activity in
                 NavigationLink {
-                    ActivityDetailsView(activity: activity)
+                    ActivityDetailsView(activity: activity, activities: activities)
                 } label: {
                     HStack {
                         Text(activity.title)
+                        
+                        Spacer()
+                        
+                        Text("Count: \(activity.count)")
                     }
                 }
             }
