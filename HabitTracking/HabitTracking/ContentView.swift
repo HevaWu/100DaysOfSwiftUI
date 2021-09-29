@@ -8,9 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var activities = Activities()
+    
+    @State private var showAddView = false
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List(activities.items) { activity in
+                HStack {
+                    Text(activity.title)
+                }
+            }
+            .sheet(
+                isPresented: $showAddView,
+                onDismiss: {
+                    showAddView = false
+                },
+                content: {
+                    AddActivityView(activities: activities)
+                }
+            )
+            .navigationTitle("All Activities")
+            .navigationBarItems(
+                trailing: Button(action: {
+                    showAddView = true
+                }, label: {
+                    Image(systemName: "plus")
+                })
+            )
+        }
     }
 }
 
