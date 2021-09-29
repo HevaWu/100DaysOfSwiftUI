@@ -11,20 +11,25 @@ struct ContentView: View {
     @ObservedObject var activities = Activities()
     
     @State private var showAddView = false
-        
+    
     var body: some View {
         NavigationView {
-            List(activities.items) { activity in
-                NavigationLink {
-                    ActivityDetailsView(activity: activity, activities: activities)
-                } label: {
-                    HStack {
-                        Text(activity.title)
-                        
-                        Spacer()
-                        
-                        Text("Count: \(activity.count)")
+            List {
+                ForEach(activities.items) { activity in
+                    NavigationLink {
+                        ActivityDetailsView(activity: activity, activities: activities)
+                    } label: {
+                        HStack {
+                            Text(activity.title)
+                            
+                            Spacer()
+                            
+                            Text("Count: \(activity.count)")
+                        }
                     }
+                }
+                .onDelete { indexSet in
+                    removeFrom(indexSet)
                 }
             }
             .sheet(
@@ -38,6 +43,7 @@ struct ContentView: View {
             )
             .navigationTitle("All Activities")
             .navigationBarItems(
+                leading: EditButton(),
                 trailing: Button(action: {
                     showAddView = true
                 }, label: {
@@ -45,6 +51,10 @@ struct ContentView: View {
                 })
             )
         }
+    }
+    
+    func removeFrom(_ indexSet: IndexSet) {
+        activities.items.remove(atOffsets: indexSet)
     }
 }
 
