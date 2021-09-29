@@ -7,11 +7,11 @@
 
 import Foundation
 
-class Activity: Identifiable, ObservableObject {
-    let id = UUID()
+struct Activity: Identifiable, Codable {
+    var id = UUID()
     var title: String
     var description: String
-    @Published var count: Int
+    var count: Int
     
     init(title: String, description: String, count: Int = 1) {
         self.title = title
@@ -21,10 +21,24 @@ class Activity: Identifiable, ObservableObject {
 }
 
 class Activities: ObservableObject {
-    @Published var items = [Activity]()
+    static let storeKey = "io.github.hevawu.HabitTracking.activities"
+    
+    @Published var items = [Activity]() {
+        didSet {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(items) {
+                UserDefaults.standard.set(encoded, forKey: Self.storeKey)
+            }
+        }
+    }
     
     init() {
-        
+        if let items = UserDefaults.standard.data(forKey: Self.storeKey) {
+            let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode([Activity].self, from: items) {
+                self.items = decoded
+            }
+        }
     }
     
     init(items: [Activity]) {

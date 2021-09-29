@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var activities = Activities.dummy
+    @ObservedObject var activities = Activities()
     
     @State private var showAddView = false
         

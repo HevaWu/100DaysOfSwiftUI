@@ -11,7 +11,7 @@ struct ActivityDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @ObservedObject var activities: Activities
-    @ObservedObject var activity: Activity
+    var activity: Activity
     
     init(activity: Activity, activities: Activities) {
         self.activity = activity
@@ -38,8 +38,7 @@ struct ActivityDetailsView: View {
                 if let index = activities.items.firstIndex(where: { $0.id == self.activity.id }) {
                     activities.items.remove(at: index)
                 }
-                activity.count = self.count
-                activities.items.append(activity)
+                activities.items.append(Activity(title: activity.title, description: activity.description, count: self.count))
                 
                 presentationMode.wrappedValue.dismiss()
             }, label: {
