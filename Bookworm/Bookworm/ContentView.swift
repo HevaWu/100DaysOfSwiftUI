@@ -9,31 +9,36 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.horizontalSizeClass) var sizeClass
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: Student.entity(), sortDescriptors: []) var students: FetchedResults<Student>
     
     var body: some View {
-        if sizeClass == .compact {
-            return AnyView(
-                VStack {
-                    Text("Active size class:")
-                    Text("COMPACT")
+        VStack {
+            List {
+                ForEach(students, id: \.id) { student in
+                    Text(student.name ?? "Unknown")
                 }
-                    .font(.largeTitle)
-            )
-        } else {
-            return AnyView(
-                HStack {
-                    Text("Active size class:")
-                    Text("REGULAR")
-                }
-                    .font(.largeTitle)
-            )
+            }
+            
+            Button("Add") {
+                let firstNames = ["Ginny", "Marry", "Hermione", "Luna", "Ron"]
+                let lastNames = ["Granger", "Lovegood", "Potter", "Weasley"]
+                
+                let firstName = firstNames.randomElement()!
+                let lastName = lastNames.randomElement()!
+                
+                let student = Student(context: moc)
+                student.id = UUID()
+                student.name = "\(firstName) \(lastName)"
+                
+                try? moc.save()
+            }
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }
