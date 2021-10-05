@@ -13,6 +13,7 @@
 		D53BD5AA270B2ACC00C14135 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D53BD5A9270B2ACC00C14135 /* Preview Assets.xcassets */; };
 		D53BD5AC270B2ACC00C14135 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53BD5AB270B2ACC00C14135 /* Persistence.swift */; };
 		D53BD5AF270B2ACC00C14135 /* Bookworm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D53BD5AD270B2ACC00C14135 /* Bookworm.xcdatamodeld */; };
+		D53BD5B6270C88AB00C14135 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53BD5B5270C88AB00C14135 /* AddBookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		D53BD5A9270B2ACC00C14135 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D53BD5AB270B2ACC00C14135 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D53BD5AE270B2ACC00C14135 /* Bookworm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bookworm.xcdatamodel; sourceTree = "<group>"; };
+		D53BD5B5270C88AB00C14135 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				D53BD5A2270B2AC900C14135 /* BookwormApp.swift */,
 				D53BD5A4270B2AC900C14135 /* ContentView.swift */,
+				D53BD5B5270C88AB00C14135 /* AddBookView.swift */,
 				D53BD5A6270B2ACC00C14135 /* Assets.xcassets */,
 				D53BD5AB270B2ACC00C14135 /* Persistence.swift */,
 				D53BD5AD270B2ACC00C14135 /* Bookworm.xcdatamodeld */,
@@ -147,6 +150,7 @@
 				D53BD5AF270B2ACC00C14135 /* Bookworm.xcdatamodeld in Sources */,
 				D53BD5A5270B2AC900C14135 /* ContentView.swift in Sources */,
 				D53BD5A3270B2AC900C14135 /* BookwormApp.swift in Sources */,
+				D53BD5B6270C88AB00C14135 /* AddBookView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
