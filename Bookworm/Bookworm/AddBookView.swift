@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddBookView: View {
     @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var title = ""
     @State private var author = ""
@@ -52,6 +53,8 @@ struct AddBookView: View {
                         newBook.review = review
                         
                         try? moc.save()
+                        
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             }
