@@ -16,6 +16,17 @@ struct DetailView: View {
     
     var book: Book
     
+    var formatDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        if let date = book.date {
+            return dateFormatter.string(from: date)
+        } else {
+            return "Unknown date"
+        }
+    }
+    
     var body: some View {
         GeometryReader { geo in
             VStack {
@@ -42,8 +53,11 @@ struct DetailView: View {
                 
                 RatingView(rating: .constant(Int(book.rating)))
                     .font(.largeTitle)
+                    .padding()
                 
                 Spacer()
+                
+                Text("Date: \(formatDate)")
             }
         }
         .navigationBarTitle(Text(book.title ?? "Unknown Book"), displayMode: .inline)
