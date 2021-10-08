@@ -8,19 +8,31 @@
 import SwiftUI
 import CoreData
 
-struct Student: Hashable {
-    let name: String
-}
-
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: Wizard.entity(), sortDescriptors: []) var wizards: FetchedResults<Wizard>
     
     var body: some View {
-        Button("Save") {
-            if moc.hasChanges {
-                try? moc.save()
+        VStack {
+            List(wizards, id: \.self) { wizard in
+                Text(wizard.name ?? "Unknown")
+                
+            }
+            
+            Button("Add") {
+                let wizard = Wizard(context: moc)
+                wizard.name = "Harry Potter"
+            }
+            
+            Button("Save") {
+                do {
+                    try moc.save()
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
         }
+        
     }
 }
 
