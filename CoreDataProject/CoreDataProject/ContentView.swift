@@ -10,7 +10,12 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Ship.entity(), sortDescriptors: [], predicate: NSPredicate(format: "universe == %@" , "Star Wars")) var ships: FetchedResults<Ship>
+    
+    // format: "universe in %@", ["A", "B", "Star Trek"]
+    // format: "name BEGINSWITH %@", "E"
+    // format: "name BEGINSWITH[c] %@", "e"
+    // format: "NOT name BEGINSWITH[c] %@", "e"
+    @FetchRequest(entity: Ship.entity(), sortDescriptors: [], predicate: NSPredicate(format: "universe in %@" , ["A", "B", "Star Trek"])) var ships: FetchedResults<Ship>
     
     var body: some View {
         VStack {
