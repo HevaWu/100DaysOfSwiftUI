@@ -23,15 +23,21 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
     
     init(predicateFilterKey: String,
          predicateFilterValue: String,
-         predicateStringComparison: String,
+         predicateStringComparison: PredicateStringComparison,
          sorterDescriptors: [NSSortDescriptor],
          @ViewBuilder content: @escaping (T) -> Content
     ) {
         fetchRequest = FetchRequest<T>(
             entity: T.entity(),
             sortDescriptors: sorterDescriptors,
-            predicate: NSPredicate(format: "%K \(predicateStringComparison) %@", predicateFilterKey, predicateFilterValue)
+            predicate: NSPredicate(format: "%K \(predicateStringComparison.rawValue) %@", predicateFilterKey, predicateFilterValue)
         )
         self.content = content
     }
+}
+
+enum PredicateStringComparison: String {
+    case beginsWith = "BEGINSWITH"
+    case greaterThanOrEqualTo = ">="
+    case lessThanOrEqualTo = "<="
 }

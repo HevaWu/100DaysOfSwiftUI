@@ -16,7 +16,7 @@ struct ContentView: View {
             FilteredList(
                 predicateFilterKey: "shortName",
                 predicateFilterValue: "UK",
-                predicateStringComparison: ">=",
+                predicateStringComparison: .greaterThanOrEqualTo,
                 sorterDescriptors: [
                     NSSortDescriptor(keyPath: \Country.shortName, ascending: true),
                 ]
