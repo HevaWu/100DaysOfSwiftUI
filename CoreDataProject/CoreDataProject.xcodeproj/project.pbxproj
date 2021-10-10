@@ -17,6 +17,7 @@
 		D58BB0E32711CCF400CEF1C2 /* Candy+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB0DF2711CCF400CEF1C2 /* Candy+CoreDataProperties.swift */; };
 		D58BB0E42711CCF400CEF1C2 /* Country+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB0E02711CCF400CEF1C2 /* Country+CoreDataClass.swift */; };
 		D58BB0E52711CCF400CEF1C2 /* Country+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB0E12711CCF400CEF1C2 /* Country+CoreDataProperties.swift */; };
+		D58BB0E72712ED2B00CEF1C2 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB0E62712ED2B00CEF1C2 /* FilteredList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		D58BB0DF2711CCF400CEF1C2 /* Candy+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Candy+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D58BB0E02711CCF400CEF1C2 /* Country+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		D58BB0E12711CCF400CEF1C2 /* Country+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D58BB0E62712ED2B00CEF1C2 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				D58BB0E12711CCF400CEF1C2 /* Country+CoreDataProperties.swift */,
 				D53BD60127106B5C00C14135 /* CoreDataProjectApp.swift */,
 				D53BD60327106B5C00C14135 /* ContentView.swift */,
+				D58BB0E62712ED2B00CEF1C2 /* FilteredList.swift */,
 				D53BD60527106B6100C14135 /* Assets.xcassets */,
 				D53BD60A27106B6100C14135 /* Persistence.swift */,
 				D53BD60C27106B6100C14135 /* CoreDataProject.xcdatamodeld */,
@@ -157,6 +160,7 @@
 			files = (
 				D53BD60B27106B6100C14135 /* Persistence.swift in Sources */,
 				D58BB0E22711CCF400CEF1C2 /* Candy+CoreDataClass.swift in Sources */,
+				D58BB0E72712ED2B00CEF1C2 /* FilteredList.swift in Sources */,
 				D53BD60427106B5C00C14135 /* ContentView.swift in Sources */,
 				D58BB0E32711CCF400CEF1C2 /* Candy+CoreDataProperties.swift in Sources */,
 				D58BB0E52711CCF400CEF1C2 /* Country+CoreDataProperties.swift in Sources */,

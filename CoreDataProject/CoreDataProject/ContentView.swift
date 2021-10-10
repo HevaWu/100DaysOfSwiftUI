@@ -11,16 +11,14 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     
-    @FetchRequest(entity: Country.entity(), sortDescriptors: []) var countries: FetchedResults<Country>
-    
     var body: some View {
         VStack {
-            List {
-                ForEach(countries, id: \.self) { country in
-                    Section(header: Text(country.wrappedFullName)) {
-                        ForEach(country.candyArray, id: \.self) { candy in
-                            Text(candy.wrappedName)
-                        }
+            FilteredList(filterKey: "shortName", filterValue: "U", sorterDescriptors: [
+                NSSortDescriptor(keyPath: \Country.shortName, ascending: true),
+            ]) { (country: Country) in
+                Section(header: Text(country.wrappedFullName)) {
+                    ForEach(country.candyArray, id: \.self) { candy in
+                        Text(candy.wrappedName)
                     }
                 }
             }
@@ -49,6 +47,12 @@ struct ContentView: View {
                 candy4.origin = Country(context: moc)
                 candy4.origin?.shortName = "CH"
                 candy4.origin?.fullName = "Swizzerland"
+                
+                let candy5 = Candy(context: moc)
+                candy5.name = "Ferrara"
+                candy5.origin = Country(context: moc)
+                candy5.origin?.shortName = "US"
+                candy5.origin?.fullName = "United States"
                 
                 try? moc.save()
             }
