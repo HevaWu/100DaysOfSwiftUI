@@ -13,9 +13,14 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            FilteredList(filterKey: "shortName", filterValue: "U", sorterDescriptors: [
-                NSSortDescriptor(keyPath: \Country.shortName, ascending: true),
-            ]) { (country: Country) in
+            FilteredList(
+                predicateFilterKey: "shortName",
+                predicateFilterValue: "UK",
+                predicateStringComparison: ">=",
+                sorterDescriptors: [
+                    NSSortDescriptor(keyPath: \Country.shortName, ascending: true),
+                ]
+            ) { (country: Country) in
                 Section(header: Text(country.wrappedFullName)) {
                     ForEach(country.candyArray, id: \.self) { candy in
                         Text(candy.wrappedName)
