@@ -15,6 +15,7 @@
 		D58BB101271460A200CEF1C2 /* FriendFace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D58BB0FF271460A200CEF1C2 /* FriendFace.xcdatamodeld */; };
 		D58BB108271460E600CEF1C2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB107271460E600CEF1C2 /* User.swift */; };
 		D58BB10A2714617900CEF1C2 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB1092714617900CEF1C2 /* Friend.swift */; };
+		D58BB10C2714659600CEF1C2 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB10B2714659600CEF1C2 /* UserDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		D58BB100271460A200CEF1C2 /* FriendFace.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendFace.xcdatamodel; sourceTree = "<group>"; };
 		D58BB107271460E600CEF1C2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D58BB1092714617900CEF1C2 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		D58BB10B2714659600CEF1C2 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			children = (
 				D58BB0F42714609F00CEF1C2 /* FriendFaceApp.swift */,
 				D58BB0F62714609F00CEF1C2 /* ContentView.swift */,
+				D58BB10B2714659600CEF1C2 /* UserDetailView.swift */,
 				D58BB107271460E600CEF1C2 /* User.swift */,
 				D58BB1092714617900CEF1C2 /* Friend.swift */,
 				D58BB0F8271460A200CEF1C2 /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 				D58BB0F72714609F00CEF1C2 /* ContentView.swift in Sources */,
 				D58BB101271460A200CEF1C2 /* FriendFace.xcdatamodeld in Sources */,
 				D58BB10A2714617900CEF1C2 /* Friend.swift in Sources */,
+				D58BB10C2714659600CEF1C2 /* UserDetailView.swift in Sources */,
 				D58BB108271460E600CEF1C2 /* User.swift in Sources */,
 				D58BB0F52714609F00CEF1C2 /* FriendFaceApp.swift in Sources */,
 			);

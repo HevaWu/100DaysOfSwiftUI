@@ -14,7 +14,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(users, id: \User.id) { user in
-                Text(user.name)
+                NavigationLink {
+                    UserDetailView(user: user)
+                } label: {
+                    Text(user.name)
+                }
             }
             .onAppear(perform: loadUsers)
             .navigationBarTitle(Text("User List"))
