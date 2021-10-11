@@ -15,7 +15,7 @@ struct ContentView: View {
         NavigationView {
             List(users, id: \User.id) { user in
                 NavigationLink {
-                    UserDetailView(user: user)
+                    UserDetailView(user: user, allUsers: users)
                 } label: {
                     Text(user.name)
                 }
