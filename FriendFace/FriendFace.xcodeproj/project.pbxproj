@@ -16,6 +16,12 @@
 		D58BB108271460E600CEF1C2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB107271460E600CEF1C2 /* User.swift */; };
 		D58BB10A2714617900CEF1C2 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB1092714617900CEF1C2 /* Friend.swift */; };
 		D58BB10C2714659600CEF1C2 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB10B2714659600CEF1C2 /* UserDetailView.swift */; };
+		D58BB1112715B8D100CEF1C2 /* DownloadedTag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB10D2715B8D000CEF1C2 /* DownloadedTag+CoreDataClass.swift */; };
+		D58BB1122715B8D100CEF1C2 /* DownloadedTag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB10E2715B8D000CEF1C2 /* DownloadedTag+CoreDataProperties.swift */; };
+		D58BB1132715B8D100CEF1C2 /* DownloadedUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB10F2715B8D000CEF1C2 /* DownloadedUser+CoreDataClass.swift */; };
+		D58BB1142715B8D100CEF1C2 /* DownloadedUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB1102715B8D000CEF1C2 /* DownloadedUser+CoreDataProperties.swift */; };
+		D58BB1172715BC3700CEF1C2 /* DownloadedFriend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB1152715BC3700CEF1C2 /* DownloadedFriend+CoreDataClass.swift */; };
+		D58BB1182715BC3700CEF1C2 /* DownloadedFriend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB1162715BC3700CEF1C2 /* DownloadedFriend+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +35,12 @@
 		D58BB107271460E600CEF1C2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D58BB1092714617900CEF1C2 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		D58BB10B2714659600CEF1C2 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		D58BB10D2715B8D000CEF1C2 /* DownloadedTag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DownloadedTag+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D58BB10E2715B8D000CEF1C2 /* DownloadedTag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DownloadedTag+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D58BB10F2715B8D000CEF1C2 /* DownloadedUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DownloadedUser+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D58BB1102715B8D000CEF1C2 /* DownloadedUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DownloadedUser+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D58BB1152715BC3700CEF1C2 /* DownloadedFriend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DownloadedFriend+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D58BB1162715BC3700CEF1C2 /* DownloadedFriend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DownloadedFriend+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +73,12 @@
 		D58BB0F32714609F00CEF1C2 /* FriendFace */ = {
 			isa = PBXGroup;
 			children = (
+				D58BB1152715BC3700CEF1C2 /* DownloadedFriend+CoreDataClass.swift */,
+				D58BB1162715BC3700CEF1C2 /* DownloadedFriend+CoreDataProperties.swift */,
+				D58BB10D2715B8D000CEF1C2 /* DownloadedTag+CoreDataClass.swift */,
+				D58BB10E2715B8D000CEF1C2 /* DownloadedTag+CoreDataProperties.swift */,
+				D58BB10F2715B8D000CEF1C2 /* DownloadedUser+CoreDataClass.swift */,
+				D58BB1102715B8D000CEF1C2 /* DownloadedUser+CoreDataProperties.swift */,
 				D58BB0F42714609F00CEF1C2 /* FriendFaceApp.swift */,
 				D58BB0F62714609F00CEF1C2 /* ContentView.swift */,
 				D58BB10B2714659600CEF1C2 /* UserDetailView.swift */,
@@ -153,12 +171,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58BB0FE271460A200CEF1C2 /* Persistence.swift in Sources */,
+				D58BB1132715B8D100CEF1C2 /* DownloadedUser+CoreDataClass.swift in Sources */,
 				D58BB0F72714609F00CEF1C2 /* ContentView.swift in Sources */,
+				D58BB1142715B8D100CEF1C2 /* DownloadedUser+CoreDataProperties.swift in Sources */,
 				D58BB101271460A200CEF1C2 /* FriendFace.xcdatamodeld in Sources */,
 				D58BB10A2714617900CEF1C2 /* Friend.swift in Sources */,
 				D58BB10C2714659600CEF1C2 /* UserDetailView.swift in Sources */,
+				D58BB1122715B8D100CEF1C2 /* DownloadedTag+CoreDataProperties.swift in Sources */,
+				D58BB1172715BC3700CEF1C2 /* DownloadedFriend+CoreDataClass.swift in Sources */,
+				D58BB1182715BC3700CEF1C2 /* DownloadedFriend+CoreDataProperties.swift in Sources */,
 				D58BB108271460E600CEF1C2 /* User.swift in Sources */,
 				D58BB0F52714609F00CEF1C2 /* FriendFaceApp.swift in Sources */,
+				D58BB1112715B8D100CEF1C2 /* DownloadedTag+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
