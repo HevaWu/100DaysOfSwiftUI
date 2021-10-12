@@ -13,7 +13,7 @@ struct ContentView: View {
     @FetchRequest(entity: DownloadedUser.entity(), sortDescriptors: []) var downloadedUsers: FetchedResults<DownloadedUser>
     
     @State private var users = [User]()
-
+    
     var body: some View {
         NavigationView {
             List(users, id: \User.id) { user in
@@ -37,22 +37,29 @@ struct ContentView: View {
     }
     
     func clearAllData() {
-        do {
-            for user in downloadedUsers {
-                for tag in user.wrappedTags {
-                    moc.delete(tag)
+        PersistenceController.shared.container.performBackgroundTask { moc in
+            do {
+                for user in downloadedUsers {
+                    for tag in user.wrappedTags {
+                        if !tag.isDeleted {
+                            moc.delete(tag)
+                        }
+                    }
+                    
+                    for friend in user.wrappedFriends {
+                        if !friend.isDeleted {
+                            moc.delete(friend)
+                        }
+                    }
+                    moc.delete(user)
                 }
                 
-                for friend in user.wrappedFriends {
-                    moc.delete(friend)
-                }
-                moc.delete(user)
+                try moc.save()
+                
+                loadUserFromDataStore()
+            } catch {
+                print("[ContentView] remove user failed. \(error.localizedDescription)")
             }
-            try moc.save()
-            
-            loadUserFromDataStore()
-        } catch {
-            print("[ContentView] remove user failed. \(error.localizedDescription)")
         }
     }
     
@@ -83,6 +90,7 @@ struct ContentView: View {
                let decoded = try? JSONDecoder().decode([User].self, from: data) {
                 saveToDataStore(decoded)
                 users = decoded
+                print("[ContentView] load from web")
             } else {
                 print("[ContentView] load users failed: response error \(error?.localizedDescription ?? "Unknown Error")")
             }
@@ -91,36 +99,39 @@ struct ContentView: View {
     }
     
     func saveToDataStore(_ decodedUsers: [User]) {
-        do {
-            for user in decodedUsers {
-                let newUser = DownloadedUser(context: moc)
-                newUser.id = user.id
-                newUser.isActive = user.isActive
-                newUser.name = user.name
-                newUser.age = Int16(user.age)
-                newUser.company = user.company
-                newUser.email = user.email
-                newUser.address = user.address
-                newUser.about = user.about
-                newUser.registered = user.registered
-                
-                for tag in user.tags {
-                    let newTag = DownloadedTag(context: moc)
-                    newTag.name = tag
-                    newUser.addToTags(newTag)
+        PersistenceController.shared.container.performBackgroundTask { moc in
+            moc.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            do {
+                for user in decodedUsers {
+                    let newUser = DownloadedUser(context: moc)
+                    newUser.id = user.id
+                    newUser.isActive = user.isActive
+                    newUser.name = user.name
+                    newUser.age = Int16(user.age)
+                    newUser.company = user.company
+                    newUser.email = user.email
+                    newUser.address = user.address
+                    newUser.about = user.about
+                    newUser.registered = user.registered
+                    
+                    for tag in user.tags {
+                        let newTag = DownloadedTag(context: moc)
+                        newTag.name = tag
+                        newUser.addToTags(newTag)
+                    }
+                    
+                    for friend in user.friends {
+                        let newFriend = DownloadedFriend(context: moc)
+                        newFriend.id = friend.id
+                        newFriend.name = friend.name
+                        newUser.addToFriends(newFriend)
+                    }
+                    
+                    try moc.save()
                 }
-                
-                for friend in user.friends {
-                    let newFriend = DownloadedFriend(context: moc)
-                    newFriend.id = friend.id
-                    newFriend.name = friend.name
-                    newUser.addToFriends(newFriend)
-                }
+            } catch {
+                print("[ContentView] Save data error. \(error)")
             }
-            
-            try moc.save()
-        } catch {
-            print("[ContentView] Save data error. \(error.localizedDescription)")
         }
     }
 }

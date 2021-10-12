@@ -18,6 +18,7 @@ extension DownloadedFriend {
 
     @NSManaged public var id: String?
     @NSManaged public var name: String?
+    @NSManaged public var userList: NSSet?
 
     var wrappedId: String {
         return id ?? "Unknown ID"
@@ -26,6 +27,23 @@ extension DownloadedFriend {
     var wrappedName: String {
         return name ?? "Unknown Friend Name"
     }
+}
+
+// MARK: Generated accessors for userList
+extension DownloadedFriend {
+
+    @objc(addUserListObject:)
+    @NSManaged public func addToUserList(_ value: DownloadedUser)
+
+    @objc(removeUserListObject:)
+    @NSManaged public func removeFromUserList(_ value: DownloadedUser)
+
+    @objc(addUserList:)
+    @NSManaged public func addToUserList(_ values: NSSet)
+
+    @objc(removeUserList:)
+    @NSManaged public func removeFromUserList(_ values: NSSet)
+
 }
 
 extension DownloadedFriend : Identifiable {

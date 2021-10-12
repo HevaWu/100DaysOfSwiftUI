@@ -3,9 +3,16 @@
     <entity name="DownloadedFriend" representedClassName="DownloadedFriend" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="userList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DownloadedUser" inverseName="friends" inverseEntity="DownloadedUser"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="DownloadedTag" representedClassName="DownloadedTag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DownloadedUser" inverseName="tags" inverseEntity="DownloadedUser"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
@@ -22,8 +29,8 @@
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="registered" optional="YES" attributeType="String"/>
-        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DownloadedFriend"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DownloadedTag"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DownloadedFriend" inverseName="userList" inverseEntity="DownloadedFriend"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DownloadedTag" inverseName="users" inverseEntity="DownloadedTag"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -31,8 +38,8 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="DownloadedFriend" positionX="0" positionY="126" width="128" height="59"/>
-        <element name="DownloadedTag" positionX="-27" positionY="90" width="128" height="44"/>
+        <element name="DownloadedFriend" positionX="0" positionY="126" width="128" height="74"/>
+        <element name="DownloadedTag" positionX="-27" positionY="90" width="128" height="59"/>
         <element name="DownloadedUser" positionX="-63" positionY="-18" width="128" height="194"/>
     </elements>
 </model>
