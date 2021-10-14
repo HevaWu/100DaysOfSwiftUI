@@ -6,30 +6,36 @@
 //
 
 import SwiftUI
-import CoreData
+import CoreImage
+import CoreImage.CIFilterBuiltins
 
 struct ContentView: View {
-    @State private var showActionSheet = false
-    @State private var backgroundColor = Color.white
+    @State private var image: Image?
 
     var body: some View {
-        Text("Hello World")
-            .frame(width: 300, height: 300)
-            .background(backgroundColor)
-            .onTapGesture {
-                showActionSheet = true
-            }
-            .actionSheet(isPresented: $showActionSheet) {
-                ActionSheet(
-                    title: Text("Change background"),
-                    message: Text("Select one of color"),
-                    buttons: [
-                        .default(Text("Red")) { backgroundColor = .red },
-                        .default(Text("Green")) { backgroundColor = .green},
-                        .default(Text("Blue")) { backgroundColor = .blue },
-                        .cancel()
-                    ])
-            }
+        VStack {
+            image?
+                .resizable()
+                .scaledToFit()
+        }
+        .onAppear(perform: loadImage)
+    }
+    
+    func loadImage() {
+        guard let input = UIImage(named: "nice") else { return }
+        let begin = CIImage(image: input)
+        
+        let context = CIContext()
+        let currentFilter = CIFilter.sepiaTone()
+        
+        currentFilter.inputImage = begin
+        currentFilter.intensity = 1
+        
+        guard let output = currentFilter.outputImage else { return }
+        if let cgImage = context.createCGImage(output, from: output.extent) {
+            let uiImage = UIImage(cgImage: cgImage)
+            image = Image(uiImage: uiImage)
+        }
     }
 }
 
