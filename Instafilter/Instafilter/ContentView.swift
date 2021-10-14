@@ -28,7 +28,7 @@ struct ContentView: View {
         let context = CIContext()
         let currentFilter = CIFilter.crystallize()
         
-        currentFilter.inputImage = begin
+        currentFilter.setValue(begin, forKey: kCIInputImageKey)
         currentFilter.radius = 200
         
         guard let output = currentFilter.outputImage else { return }
