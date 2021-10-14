@@ -26,10 +26,14 @@ struct ContentView: View {
         let begin = CIImage(image: input)
         
         let context = CIContext()
-        let currentFilter = CIFilter.crystallize()
+        
+        guard let currentFilter = CIFilter(name: "CITwirlDistortion") else { return }
         
         currentFilter.setValue(begin, forKey: kCIInputImageKey)
-        currentFilter.radius = 200
+        currentFilter.setValue(2000, forKey: kCIInputRadiusKey)
+        currentFilter.setValue(
+            CIVector(x: input.size.width/2, y: input.size.height/2),
+            forKey: kCIInputCenterKey)
         
         guard let output = currentFilter.outputImage else { return }
         if let cgImage = context.createCGImage(output, from: output.extent) {
