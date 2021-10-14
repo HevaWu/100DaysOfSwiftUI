@@ -11,14 +11,21 @@ import CoreImage.CIFilterBuiltins
 
 struct ContentView: View {
     @State private var image: Image?
+    @State private var showImagePicker = false
 
     var body: some View {
         VStack {
             image?
                 .resizable()
                 .scaledToFit()
+            
+            Button("Select Image") {
+                showImagePicker = true
+            }
         }
-        .onAppear(perform: loadImage)
+        .sheet(isPresented: $showImagePicker, content: {
+            ImagePicker()
+        })
     }
     
     func loadImage() {

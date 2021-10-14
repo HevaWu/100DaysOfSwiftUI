@@ -13,6 +13,7 @@
 		D58BB12D2717065B00CEF1C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D58BB12C2717065B00CEF1C2 /* Preview Assets.xcassets */; };
 		D58BB12F2717065B00CEF1C2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB12E2717065B00CEF1C2 /* Persistence.swift */; };
 		D58BB1322717065C00CEF1C2 /* Instafilter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D58BB1302717065C00CEF1C2 /* Instafilter.xcdatamodeld */; };
+		D58BB13927185B8000CEF1C2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BB13827185B8000CEF1C2 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		D58BB12C2717065B00CEF1C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D58BB12E2717065B00CEF1C2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D58BB1312717065C00CEF1C2 /* Instafilter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Instafilter.xcdatamodel; sourceTree = "<group>"; };
+		D58BB13827185B8000CEF1C2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				D58BB1252717065800CEF1C2 /* InstafilterApp.swift */,
 				D58BB1272717065800CEF1C2 /* ContentView.swift */,
+				D58BB13827185B8000CEF1C2 /* ImagePicker.swift */,
 				D58BB1292717065B00CEF1C2 /* Assets.xcassets */,
 				D58BB12E2717065B00CEF1C2 /* Persistence.swift */,
 				D58BB1302717065C00CEF1C2 /* Instafilter.xcdatamodeld */,
@@ -145,6 +148,7 @@
 			files = (
 				D58BB12F2717065B00CEF1C2 /* Persistence.swift in Sources */,
 				D58BB1322717065C00CEF1C2 /* Instafilter.xcdatamodeld in Sources */,
+				D58BB13927185B8000CEF1C2 /* ImagePicker.swift in Sources */,
 				D58BB1282717065800CEF1C2 /* ContentView.swift in Sources */,
 				D58BB1262717065800CEF1C2 /* InstafilterApp.swift in Sources */,
 			);
