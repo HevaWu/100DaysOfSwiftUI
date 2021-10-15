@@ -12,6 +12,8 @@ import CoreImage.CIFilterBuiltins
 struct ContentView: View {
     @State private var image: Image?
     @State private var showImagePicker = false
+    
+    @State private var inputImage: UIImage?
 
     var body: some View {
         VStack {
@@ -23,30 +25,17 @@ struct ContentView: View {
                 showImagePicker = true
             }
         }
-        .sheet(isPresented: $showImagePicker, content: {
-            ImagePicker()
-        })
+        .sheet(
+            isPresented: $showImagePicker,
+            onDismiss: loadImage,
+            content: {
+                ImagePicker(image: $inputImage)
+            })
     }
     
     func loadImage() {
-        guard let input = UIImage(named: "nice") else { return }
-        let begin = CIImage(image: input)
-        
-        let context = CIContext()
-        
-        guard let currentFilter = CIFilter(name: "CITwirlDistortion") else { return }
-        
-        currentFilter.setValue(begin, forKey: kCIInputImageKey)
-        currentFilter.setValue(2000, forKey: kCIInputRadiusKey)
-        currentFilter.setValue(
-            CIVector(x: input.size.width/2, y: input.size.height/2),
-            forKey: kCIInputCenterKey)
-        
-        guard let output = currentFilter.outputImage else { return }
-        if let cgImage = context.createCGImage(output, from: output.extent) {
-            let uiImage = UIImage(cgImage: cgImage)
-            image = Image(uiImage: uiImage)
-        }
+        guard let input = inputImage else { return }
+        image = Image(uiImage: input)
     }
 }
 
