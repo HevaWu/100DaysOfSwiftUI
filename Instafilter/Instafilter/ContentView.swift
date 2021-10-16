@@ -9,47 +9,63 @@ import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
 
-class ImageSaver: NSObject {
-    func writeToPhotoAlbum(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError(_:didFinishSavingWithError:contextInfo:)), nil)
-    }
-    
-    @objc
-    func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        print("Saved!")
-    }
-}
-
 struct ContentView: View {
     @State private var image: Image?
-    @State private var showImagePicker = false
+    @State private var filterIntensity = 0.5
     
+    @State private var showImagePicker = false
     @State private var inputImage: UIImage?
-
+    
     var body: some View {
-        VStack {
-            image?
-                .resizable()
-                .scaledToFit()
+        NavigationView {
+            VStack {
+                ZStack {
+                    Rectangle()
+                        .fill(Color.secondary)
+                    
+                    if let image = image {
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        Text("Tap to select a picture")
+                            .foregroundColor(.white)
+                            .font(.headline)
+                    }
+                }
+                .onTapGesture {
+                    showImagePicker = true
+                }
+                
+                HStack {
+                    Text("Intensity")
+                    Slider(value: $filterIntensity)
+                }
+                .padding()
             
-            Button("Select Image") {
-                showImagePicker = true
+                HStack {
+                    Button("Change Filter") {
+                        // change filter
+                    }
+                    
+                    Spacer()
+                    
+                    Button("Save") {
+                        // save picture
+                    }
+                }
+            }
+            .padding([.horizontal, .bottom])
+            .navigationBarTitle("Instafilter")
+            .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
+                ImagePicker(image: $inputImage)
             }
         }
-        .sheet(
-            isPresented: $showImagePicker,
-            onDismiss: loadImage,
-            content: {
-                ImagePicker(image: $inputImage)
-            })
     }
     
     func loadImage() {
         guard let input = inputImage else { return }
         image = Image(uiImage: input)
-        
-        let imageSaver = ImageSaver()
-        imageSaver.writeToPhotoAlbum(image: input)
     }
 }
 
