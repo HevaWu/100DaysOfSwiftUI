@@ -15,8 +15,21 @@ struct ContentView: View {
     
     @State private var showImagePicker = false
     @State private var inputImage: UIImage?
+
+    @State var currentFilter = CIFilter.sepiaTone()
+    let context = CIContext()
     
     var body: some View {
+        let intensity = Binding<Double>(
+            get: {
+                self.filterIntensity
+            },
+            set: {
+                self.filterIntensity = $0
+                self.applyProcessing()
+            }
+        )
+        
         NavigationView {
             VStack {
                 ZStack {
@@ -39,7 +52,7 @@ struct ContentView: View {
                 
                 HStack {
                     Text("Intensity")
-                    Slider(value: $filterIntensity)
+                    Slider(value: intensity)
                 }
                 .padding()
             
@@ -65,7 +78,20 @@ struct ContentView: View {
     
     func loadImage() {
         guard let input = inputImage else { return }
-        image = Image(uiImage: input)
+        
+        let beginImage = CIImage(image: input)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        applyProcessing()
+    }
+    
+    func applyProcessing() {
+        currentFilter.intensity = Float(filterIntensity)
+        guard let output = currentFilter.outputImage else { return }
+        
+        if let cgImage = context.createCGImage(output, from: output.extent) {
+            let uiImage = UIImage(cgImage: cgImage)
+            image = Image(uiImage: uiImage)
+        }
     }
 }
 
