@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var showImagePicker = false
     @State private var inputImage: UIImage?
 
+    @State private var currentFilterTitle = "Change Filter"
     @State var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
     
@@ -63,7 +64,7 @@ struct ContentView: View {
                 .padding()
             
                 HStack {
-                    Button("Change Filter") {
+                    Button(currentFilterTitle) {
                         showFilterSheet = true
                     }
                     
@@ -96,13 +97,28 @@ struct ContentView: View {
                 ActionSheet(
                     title: Text("Select Filter"),
                     buttons: [
-                        .default(Text("Crystallize")) { self.setFilter(CIFilter.crystallize()) },
-                        .default(Text("Edges")) { self.setFilter(CIFilter.edges()) },
-                        .default(Text("Gaussian Blur")) { self.setFilter(CIFilter.gaussianBlur()) },
-                        .default(Text("Pixellate")) { self.setFilter(CIFilter.pixellate()) },
-                        .default(Text("Sepia Tone")) { self.setFilter(.sepiaTone()) },
-                        .default(Text("Unsharp Mask")) { self.setFilter(.unsharpMask()) },
-                        .default(Text("Vignete")) { self.setFilter(.vignette()) },
+                        .default(Text("Crystallize")) {
+                            currentFilterTitle = "Crystallize"
+                            self.setFilter(CIFilter.crystallize())
+                        },
+                        .default(Text("Edges")) { self.setFilter(CIFilter.edges())
+                            currentFilterTitle = "Edges"
+                        },
+                        .default(Text("Gaussian Blur")) { self.setFilter(CIFilter.gaussianBlur())
+                            currentFilterTitle = "Gaussian Blur"
+                        },
+                        .default(Text("Pixellate")) { self.setFilter(CIFilter.pixellate())
+                            currentFilterTitle = "Pixellate"
+                        },
+                        .default(Text("Sepia Tone")) { self.setFilter(.sepiaTone())
+                            currentFilterTitle = "Sepia Tone"
+                        },
+                        .default(Text("Unsharp Mask")) { self.setFilter(.unsharpMask())
+                            currentFilterTitle = "Unsharp Mask"
+                        },
+                        .default(Text("Vignete")) { self.setFilter(.vignette())
+                            currentFilterTitle = "Vignete"
+                        },
                         .cancel()
                     ])
             }
