@@ -23,6 +23,8 @@ struct ContentView: View {
     
     @State private var processedImage: UIImage?
     
+    @State private var showNoImageAlert = false
+    
     var body: some View {
         let intensity = Binding<Double>(
             get: {
@@ -69,6 +71,7 @@ struct ContentView: View {
                     
                     Button("Save") {
                         guard let processedImage = processedImage else {
+                            showNoImageAlert = true
                             return
                         }
                         let imageSaver = ImageSaver()
@@ -102,6 +105,13 @@ struct ContentView: View {
                         .default(Text("Vignete")) { self.setFilter(.vignette()) },
                         .cancel()
                     ])
+            }
+            .alert(isPresented: $showNoImageAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text("Cannot Save Image because there is no image now"),
+                    dismissButton: Alert.Button.default(Text("OK"))
+                )
             }
         }
     }
