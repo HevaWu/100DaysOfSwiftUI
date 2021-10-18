@@ -20,7 +20,7 @@ struct ContentView: View {
     @State private var showImagePicker = false
     @State private var inputImage: UIImage?
 
-    @State private var currentFilterTitle = "Change Filter"
+    @State private var currentFilterTitle = "Sepia Tone"
     @State var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
     
