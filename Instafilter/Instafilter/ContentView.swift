@@ -12,6 +12,8 @@ import CoreImage.CIFilterBuiltins
 struct ContentView: View {
     @State private var image: Image?
     @State private var filterIntensity = 0.5
+    @State private var filterRadius = 100.0
+    @State private var filterScale = 5.0
     
     @State private var showFilterSheet = false
     
@@ -33,6 +35,26 @@ struct ContentView: View {
             },
             set: {
                 self.filterIntensity = $0
+                self.applyProcessing()
+            }
+        )
+        
+        let radius = Binding<Double>(
+            get: {
+                self.filterRadius
+            },
+            set: {
+                self.filterRadius = $0
+                self.applyProcessing()
+            }
+        )
+        
+        let scale = Binding<Double>(
+            get: {
+                self.filterScale
+            },
+            set: {
+                self.filterScale = $0
                 self.applyProcessing()
             }
         )
@@ -60,6 +82,18 @@ struct ContentView: View {
                 HStack {
                     Text("Intensity")
                     Slider(value: intensity)
+                }
+                .padding()
+                
+                HStack {
+                    Text("Radius")
+                    Slider(value: radius, in: 0...200)
+                }
+                .padding()
+                
+                HStack {
+                    Text("Scale")
+                    Slider(value: scale, in: 0...10)
                 }
                 .padding()
             
@@ -146,10 +180,10 @@ struct ContentView: View {
             currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
         }
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(filterRadius, forKey: kCIInputRadiusKey)
         }
         if inputKeys.contains(kCIInputScaleKey) {
-            currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
+            currentFilter.setValue(filterScale, forKey: kCIInputScaleKey)
         }
         
         guard let output = currentFilter.outputImage else { return }
