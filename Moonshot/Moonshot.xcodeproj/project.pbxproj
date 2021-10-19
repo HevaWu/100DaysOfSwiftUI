@@ -20,6 +20,7 @@
 		D568588426FC704200CF5A84 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568588326FC704200CF5A84 /* Mission.swift */; };
 		D568588826FC7A6700CF5A84 /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568588726FC7A6700CF5A84 /* MissionView.swift */; };
 		D568588A26FC7FBB00CF5A84 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568588926FC7FBB00CF5A84 /* AstronautView.swift */; };
+		D5AE2ADD271EFAE7002A81A0 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AE2ADC271EFAE7002A81A0 /* FileManager+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D568588326FC704200CF5A84 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		D568588726FC7A6700CF5A84 /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 		D568588926FC7FBB00CF5A84 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
+		D5AE2ADC271EFAE7002A81A0 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				D568588926FC7FBB00CF5A84 /* AstronautView.swift */,
 				D568588326FC704200CF5A84 /* Mission.swift */,
 				D568588126FC6E5E00CF5A84 /* Bundle-Decodable.swift */,
+				D5AE2ADC271EFAE7002A81A0 /* FileManager+Extension.swift */,
 				D568586B26FB6B4100CF5A84 /* Assets.xcassets */,
 				D568587026FB6B4100CF5A84 /* LaunchScreen.storyboard */,
 				D568587326FB6B4100CF5A84 /* Info.plist */,
@@ -176,6 +179,7 @@
 				D568588226FC6E5E00CF5A84 /* Bundle-Decodable.swift in Sources */,
 				D568586A26FB6B3E00CF5A84 /* ContentView.swift in Sources */,
 				D568588026FC6DFE00CF5A84 /* Astronaut.swift in Sources */,
+				D5AE2ADD271EFAE7002A81A0 /* FileManager+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

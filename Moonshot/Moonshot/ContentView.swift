@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
-    let missions: [Mission] = Bundle.main.decode("missions.json")
+    let astronauts: [Astronaut] = FileManager.default.decode("astronauts.json")
+    let missions: [Mission] = FileManager.default.decode("missions.json")
     
     @State private var showLaunchDate = true
     
