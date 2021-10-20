@@ -13,6 +13,7 @@
 		D5AE2AD1271EF1F5002A81A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5AE2AD0271EF1F5002A81A0 /* Preview Assets.xcassets */; };
 		D5AE2AD3271EF1F5002A81A0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AE2AD2271EF1F5002A81A0 /* Persistence.swift */; };
 		D5AE2AD6271EF1F5002A81A0 /* BucketList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5AE2AD4271EF1F5002A81A0 /* BucketList.xcdatamodeld */; };
+		D5AE2ADF27204124002A81A0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AE2ADE27204124002A81A0 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		D5AE2AD0271EF1F5002A81A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D5AE2AD2271EF1F5002A81A0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D5AE2AD5271EF1F5002A81A0 /* BucketList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BucketList.xcdatamodel; sourceTree = "<group>"; };
+		D5AE2ADE27204124002A81A0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				D5AE2AC9271EF1F3002A81A0 /* BucketListApp.swift */,
 				D5AE2ACB271EF1F3002A81A0 /* ContentView.swift */,
+				D5AE2ADE27204124002A81A0 /* MapView.swift */,
 				D5AE2ACD271EF1F5002A81A0 /* Assets.xcassets */,
 				D5AE2AD2271EF1F5002A81A0 /* Persistence.swift */,
 				D5AE2AD4271EF1F5002A81A0 /* BucketList.xcdatamodeld */,
@@ -145,6 +148,7 @@
 			files = (
 				D5AE2AD3271EF1F5002A81A0 /* Persistence.swift in Sources */,
 				D5AE2AD6271EF1F5002A81A0 /* BucketList.xcdatamodeld in Sources */,
+				D5AE2ADF27204124002A81A0 /* MapView.swift in Sources */,
 				D5AE2ACC271EF1F3002A81A0 /* ContentView.swift in Sources */,
 				D5AE2ACA271EF1F3002A81A0 /* BucketListApp.swift in Sources */,
 			);
