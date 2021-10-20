@@ -32,6 +32,12 @@ struct MapView: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
+        
+        let annotation = MKPointAnnotation()
+        annotation.title = "London"
+        annotation.subtitle = "Captial of England"
+        annotation.coordinate = CLLocationCoordinate2D(latitude: 51.5, longitude: -0.13)
+        mapView.addAnnotation(annotation)
         return mapView
     }
 }
