@@ -31,6 +31,7 @@ struct ContentView: View {
                     Spacer()
                     Button {
                         let newLocation = MKPointAnnotation()
+                        newLocation.title = "Example location"
                         newLocation.coordinate = centerCoordinate
                         locations.append(newLocation)
                     } label: {
