@@ -10,12 +10,17 @@ import MapKit
 
 struct MapView: UIViewRepresentable {
     @Binding var centerCoordinator: CLLocationCoordinate2D
+    var annotations = [MKPointAnnotation]()
     
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapView
         
         init(_ parent: MapView) {
             self.parent = parent
+        }
+        
+        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+            parent.centerCoordinator = mapView.centerCoordinate
         }
     }
     
@@ -24,7 +29,10 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        
+        if annotations.count != uiView.annotations.count {
+            uiView.removeAnnotations(uiView.annotations)
+            uiView.addAnnotations(annotations)
+        }
     }
     
     func makeUIView(context: Context) -> MKMapView {
@@ -47,6 +55,10 @@ extension MKPointAnnotation {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(centerCoordinator: .constant(MKPointAnnotation.example.coordinate))
+        MapView(
+            centerCoordinator: .constant(MKPointAnnotation.example.coordinate),
+            annotations: [.example]
+        )
+        
     }
 }

@@ -6,41 +6,44 @@
 //
 
 import SwiftUI
-import LocalAuthentication
+import MapKit
 
 struct ContentView: View {
-    @State private var isUnlocked = false
+    @State private var centerCoordinate = CLLocationCoordinate2D()
+    @State private var locations = [MKPointAnnotation]()
     
     var body: some View {
-        VStack {
-            if isUnlocked {
-                Text("Unlocked")
-            } else {
-                Text("Locked")
-            }
-        }
-        .onAppear(perform: authenticate)
-    }
-    
-    func authenticate() {
-        let context = LAContext()
-        var error: NSError?
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Need to unlock"
+        ZStack {
+            MapView(
+                centerCoordinator: $centerCoordinate,
+                annotations: locations
+            )
+                .edgesIgnoringSafeArea(.all)
             
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authError in
-                DispatchQueue.main.async {
-                    if success {
-                        // auth success
-                        isUnlocked = true
-                    } else {
-                        // auth failed
+            Circle()
+                .fill(Color.blue)
+                .opacity(0.3)
+                .frame(width: 32, height: 32)
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button {
+                        let newLocation = MKPointAnnotation()
+                        newLocation.coordinate = centerCoordinate
+                        locations.append(newLocation)
+                    } label: {
+                        Image(systemName: "plus")
                     }
+                    .padding()
+                    .background(Color.black.opacity(0.75))
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .clipShape(Circle())
+                    .padding(.trailing)
                 }
             }
-        } else {
-            // no biometrics
         }
     }
 }
