@@ -11,11 +11,15 @@ import MapKit
 struct ContentView: View {
     @State private var centerCoordinate = CLLocationCoordinate2D()
     @State private var locations = [MKPointAnnotation]()
+    @State private var selectedPlace: MKPointAnnotation?
+    @State private var showPlaceDetails = false
     
     var body: some View {
         ZStack {
             MapView(
                 centerCoordinator: $centerCoordinate,
+                selectedPlace: $selectedPlace,
+                showPlaceDetails: $showPlaceDetails,
                 annotations: locations
             )
                 .edgesIgnoringSafeArea(.all)
@@ -45,6 +49,16 @@ struct ContentView: View {
                     .padding(.trailing)
                 }
             }
+        }
+        .alert(isPresented: $showPlaceDetails) {
+            Alert(
+                title: Text(selectedPlace?.title ?? "Unknown"),
+                message: Text(selectedPlace?.subtitle ?? "Missing place information"),
+                primaryButton: Alert.Button.default(Text("OK")),
+                secondaryButton: Alert.Button.default(Text("Edit")) {
+                    // edit this part
+                }
+            )
         }
     }
 }
