@@ -16,6 +16,7 @@
 		D5AE2ADF27204124002A81A0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AE2ADE27204124002A81A0 /* MapView.swift */; };
 		D5F3EB262722D3B10092E024 /* MKPointAnnotation+ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3EB252722D3B10092E024 /* MKPointAnnotation+ObservableObject.swift */; };
 		D5F3EB282722D4250092E024 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3EB272722D4250092E024 /* EditView.swift */; };
+		D5F3EB2A2722D6640092E024 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3EB292722D6640092E024 /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		D5AE2ADE27204124002A81A0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D5F3EB252722D3B10092E024 /* MKPointAnnotation+ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation+ObservableObject.swift"; sourceTree = "<group>"; };
 		D5F3EB272722D4250092E024 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		D5F3EB292722D6640092E024 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				D5AE2AC9271EF1F3002A81A0 /* BucketListApp.swift */,
 				D5AE2ACB271EF1F3002A81A0 /* ContentView.swift */,
+				D5F3EB292722D6640092E024 /* Result.swift */,
 				D5F3EB252722D3B10092E024 /* MKPointAnnotation+ObservableObject.swift */,
 				D5F3EB272722D4250092E024 /* EditView.swift */,
 				D5AE2ADE27204124002A81A0 /* MapView.swift */,
@@ -158,6 +161,7 @@
 				D5AE2ACC271EF1F3002A81A0 /* ContentView.swift in Sources */,
 				D5F3EB282722D4250092E024 /* EditView.swift in Sources */,
 				D5AE2ACA271EF1F3002A81A0 /* BucketListApp.swift in Sources */,
+				D5F3EB2A2722D6640092E024 /* Result.swift in Sources */,
 				D5F3EB262722D3B10092E024 /* MKPointAnnotation+ObservableObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
