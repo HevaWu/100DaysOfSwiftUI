@@ -10,7 +10,7 @@ import MapKit
 
 struct ContentView: View {
     @State private var centerCoordinate = CLLocationCoordinate2D()
-    @State private var locations = [MKPointAnnotation]()
+    @State private var locations = [CodableMKPointAnnotation]()
     @State private var selectedPlace: MKPointAnnotation?
     @State private var showPlaceDetails = false
     
@@ -36,7 +36,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     Button {
-                        let newLocation = MKPointAnnotation()
+                        let newLocation = CodableMKPointAnnotation()
                         newLocation.title = "Example location"
                         newLocation.coordinate = centerCoordinate
                         locations.append(newLocation)
@@ -65,10 +65,38 @@ struct ContentView: View {
                 }
             )
         }
-        .sheet(isPresented: $showEditScreen) {
+        .sheet(isPresented: $showEditScreen, onDismiss: saveData) {
             if let selectedPlace = selectedPlace {
                 EditView(placemark: selectedPlace)
             }
+        }
+        .onAppear(perform: loadData)
+    }
+    
+    func getDocumentDiretory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func loadData() {
+        let filename = getDocumentDiretory().appendingPathComponent("SavedPlaces")
+        
+        do {
+            let data = try Data(contentsOf: filename)
+            locations = try JSONDecoder().decode([CodableMKPointAnnotation].self, from: data)
+        } catch {
+            print("Unable to load saved data.")
+        }
+    }
+    
+    func saveData() {
+        let filename = getDocumentDiretory().appendingPathComponent("SavedPlaces")
+        
+        do {
+            let data = try JSONEncoder().encode(locations)
+            try data.write(to: filename, options: [.atomic, .completeFileProtection])
+        } catch {
+            print("Unable to save data.")
         }
     }
 }
