@@ -18,6 +18,7 @@
 		D5F3EB282722D4250092E024 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3EB272722D4250092E024 /* EditView.swift */; };
 		D5F3EB2A2722D6640092E024 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3EB292722D6640092E024 /* Result.swift */; };
 		D5F3EB2C2726D6630092E024 /* MKPointAnnotation+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3EB2B2726D6630092E024 /* MKPointAnnotation+Codable.swift */; };
+		D5F3EB30272830A80092E024 /* CenterCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F3EB2F272830A80092E024 /* CenterCircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		D5F3EB272722D4250092E024 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		D5F3EB292722D6640092E024 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		D5F3EB2B2726D6630092E024 /* MKPointAnnotation+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation+Codable.swift"; sourceTree = "<group>"; };
+		D5F3EB2F272830A80092E024 /* CenterCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterCircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			children = (
 				D5AE2AC9271EF1F3002A81A0 /* BucketListApp.swift */,
 				D5AE2ACB271EF1F3002A81A0 /* ContentView.swift */,
+				D5F3EB2F272830A80092E024 /* CenterCircleView.swift */,
 				D5F3EB292722D6640092E024 /* Result.swift */,
 				D5F3EB252722D3B10092E024 /* MKPointAnnotation+ObservableObject.swift */,
 				D5F3EB2B2726D6630092E024 /* MKPointAnnotation+Codable.swift */,
@@ -161,6 +164,7 @@
 				D5AE2AD3271EF1F5002A81A0 /* Persistence.swift in Sources */,
 				D5AE2AD6271EF1F5002A81A0 /* BucketList.xcdatamodeld in Sources */,
 				D5AE2ADF27204124002A81A0 /* MapView.swift in Sources */,
+				D5F3EB30272830A80092E024 /* CenterCircleView.swift in Sources */,
 				D5AE2ACC271EF1F3002A81A0 /* ContentView.swift in Sources */,
 				D5F3EB282722D4250092E024 /* EditView.swift in Sources */,
 				D5AE2ACA271EF1F3002A81A0 /* BucketListApp.swift in Sources */,

@@ -31,10 +31,7 @@ struct ContentView: View {
                 )
                     .edgesIgnoringSafeArea(.all)
                 
-                Circle()
-                    .fill(Color.blue)
-                    .opacity(0.3)
-                    .frame(width: 32, height: 32)
+                CenterCircleView()
                 
                 VStack {
                     Spacer()
