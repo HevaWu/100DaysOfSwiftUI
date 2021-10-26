@@ -37,23 +37,12 @@ struct ContentView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        Button {
-                            let newLocation = CodableMKPointAnnotation()
-                            newLocation.title = "Example location"
-                            newLocation.coordinate = centerCoordinate
-                            locations.append(newLocation)
-                            
-                            selectedPlace = newLocation
-                            showEditScreen = true
-                        } label: {
-                            Image(systemName: "plus")
-                                .padding()
-                                .background(Color.black.opacity(0.75))
-                                .foregroundColor(.white)
-                                .font(.title)
-                                .clipShape(Circle())
-                                .padding(.trailing)
-                        }
+                        AddPlaceButtonView(
+                            centerCoordinate: $centerCoordinate,
+                            locations: $locations,
+                            selectedPlace: $selectedPlace,
+                            showEditScreen: $showEditScreen
+                        )
                     }
                 }
             } else {
