@@ -13,11 +13,22 @@ struct ContentView: View {
     @State private var centerCoordinate = CLLocationCoordinate2D()
     @State private var locations = [CodableMKPointAnnotation]()
     @State private var selectedPlace: MKPointAnnotation?
-    @State private var showPlaceDetails = false
-    
+
     @State private var showEditScreen = false
     
     @State private var isUnlocked = false
+    
+    @State private var showAlert = false
+    @State private var showAuthenticationError = false {
+        didSet {
+            showAlert = showAlert || showAuthenticationError
+        }
+    }
+    @State private var showPlaceDetails = false {
+        didSet {
+            showAlert = showAlert || showPlaceDetails
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -55,15 +66,27 @@ struct ContentView: View {
                 .clipShape(Capsule())
             }
         }
-        .alert(isPresented: $showPlaceDetails) {
-            Alert(
-                title: Text(selectedPlace?.title ?? "Unknown"),
-                message: Text(selectedPlace?.subtitle ?? "Missing place information"),
-                primaryButton: Alert.Button.default(Text("OK")),
-                secondaryButton: Alert.Button.default(Text("Edit")) {
-                    showEditScreen = true
-                }
-            )
+        .alert(isPresented: $showAlert) {
+            if showPlaceDetails {
+                return Alert(
+                    title: Text(selectedPlace?.title ?? "Unknown"),
+                    message: Text(selectedPlace?.subtitle ?? "Missing place information"),
+                    primaryButton: Alert.Button.default(Text("OK")),
+                    secondaryButton: Alert.Button.default(Text("Edit")) {
+                        showEditScreen = true
+                    }
+                )
+            }
+            
+            if showAuthenticationError {
+                return Alert(
+                    title: Text("Authentication Error"),
+                    message: Text("Unlock faceID failed."),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
+            
+            return Alert(title: Text("Unknown"), message: Text("Unknown"), dismissButton: .default(Text("OK")))
         }
         .sheet(isPresented: $showEditScreen, onDismiss: saveData) {
             if let selectedPlace = selectedPlace {
@@ -111,12 +134,12 @@ struct ContentView: View {
                     if success {
                         isUnlocked = true
                     } else {
-                        // error handling
+                        showAuthenticationError = true
                     }
                 }
             }
         } else {
-            // no biometrics
+            showAuthenticationError = true
         }
     }
 }
