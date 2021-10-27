@@ -25,15 +25,8 @@ struct ContentView: View {
     @State private var selectedPicture = Int.random(in: 0...3)
     
     var body: some View {
-        Image(pictures[selectedPicture])
-            .resizable()
-            .scaledToFit()
-            .accessibilityLabel(Text(labels[selectedPicture]))
-            .accessibilityAddTraits(.isButton)
-            .accessibilityRemoveTraits(.isImage)
-            .onTapGesture {
-                self.selectedPicture = Int.random(in: 0...3)
-            }
+        Image(decorative: "ales-krivec-15949")
+            .accessibilityHidden(true)
     }
 }
 
