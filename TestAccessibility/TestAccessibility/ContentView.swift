@@ -25,8 +25,12 @@ struct ContentView: View {
     @State private var selectedPicture = Int.random(in: 0...3)
     
     var body: some View {
-        Image(decorative: "ales-krivec-15949")
-            .accessibilityHidden(true)
+        VStack {
+            Text("Your score is")
+            Text("1000")
+                .font(.title)
+        }
+        .accessibilityElement(children: .combine)
     }
 }
 
