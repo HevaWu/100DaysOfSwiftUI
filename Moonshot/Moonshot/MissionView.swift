@@ -26,6 +26,7 @@ struct MissionView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: geo.size.width * 0.7)
                         .padding(.top)
+                        .accessibilityHidden(true)
                     
                     Text("Launch Date: \(mission.formattedLaunchDate)")
                         .padding()
@@ -46,6 +47,7 @@ struct MissionView: View {
                                             Capsule()
                                                 .stroke(Color.primary, lineWidth: 1)
                                         )
+                                        .accessibilityHidden(true)
                                     
                                     VStack(alignment: .leading) {
                                         Text(crewMember.astronaut.name)
