@@ -39,6 +39,23 @@ struct ContentView: View {
                     Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
                         Text("\(sleepAmount, specifier: "%g") hours")
                     }
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityValue(Text("\(sleepAmount, specifier: "%g") hours"))
+                    .accessibilityAdjustableAction { direction in
+                        switch direction {
+                        case .increment:
+                            if sleepAmount < 12 {
+                                sleepAmount += 0.25
+                            }
+                            
+                        case .decrement:
+                            if sleepAmount > 4 {
+                                sleepAmount -= 0.25
+                            }
+                        @unknown default:
+                            break
+                        }
+                    }
                 }
                 
                 Section(header: Text("Daily coffee intake")) {
