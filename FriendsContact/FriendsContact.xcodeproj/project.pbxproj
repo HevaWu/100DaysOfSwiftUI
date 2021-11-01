@@ -13,6 +13,8 @@
 		D5D611162730198400F6B33B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D611152730198400F6B33B /* Preview Assets.xcassets */; };
 		D5D611182730198400F6B33B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D611172730198400F6B33B /* Persistence.swift */; };
 		D5D6111B2730198400F6B33B /* FriendsContact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5D611192730198400F6B33B /* FriendsContact.xcdatamodeld */; };
+		D5D6112227301AA600F6B33B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6112127301AA600F6B33B /* ImagePicker.swift */; };
+		D5D6112427301F7600F6B33B /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6112327301F7600F6B33B /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		D5D611152730198400F6B33B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D5D611172730198400F6B33B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D5D6111A2730198400F6B33B /* FriendsContact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendsContact.xcdatamodel; sourceTree = "<group>"; };
+		D5D6112127301AA600F6B33B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D5D6112327301F7600F6B33B /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 			children = (
 				D5D6110E2730198000F6B33B /* FriendsContactApp.swift */,
 				D5D611102730198000F6B33B /* ContentView.swift */,
+				D5D6112327301F7600F6B33B /* AddView.swift */,
+				D5D6112127301AA600F6B33B /* ImagePicker.swift */,
 				D5D611122730198400F6B33B /* Assets.xcassets */,
 				D5D611172730198400F6B33B /* Persistence.swift */,
 				D5D611192730198400F6B33B /* FriendsContact.xcdatamodeld */,
@@ -145,6 +151,8 @@
 			files = (
 				D5D611182730198400F6B33B /* Persistence.swift in Sources */,
 				D5D611112730198000F6B33B /* ContentView.swift in Sources */,
+				D5D6112427301F7600F6B33B /* AddView.swift in Sources */,
+				D5D6112227301AA600F6B33B /* ImagePicker.swift in Sources */,
 				D5D6111B2730198400F6B33B /* FriendsContact.xcdatamodeld in Sources */,
 				D5D6110F2730198000F6B33B /* FriendsContactApp.swift in Sources */,
 			);
