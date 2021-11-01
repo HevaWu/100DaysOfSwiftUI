@@ -15,6 +15,9 @@
 		D5D6111B2730198400F6B33B /* FriendsContact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5D611192730198400F6B33B /* FriendsContact.xcdatamodeld */; };
 		D5D6112227301AA600F6B33B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6112127301AA600F6B33B /* ImagePicker.swift */; };
 		D5D6112427301F7600F6B33B /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6112327301F7600F6B33B /* AddView.swift */; };
+		D5D611272730259900F6B33B /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D611252730259900F6B33B /* Friend+CoreDataClass.swift */; };
+		D5D6112A2730267800F6B33B /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D611292730267800F6B33B /* FileManager+Extension.swift */; };
+		D5D6112E2730273E00F6B33B /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6112D2730273E00F6B33B /* Friend+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		D5D6111A2730198400F6B33B /* FriendsContact.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendsContact.xcdatamodel; sourceTree = "<group>"; };
 		D5D6112127301AA600F6B33B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D5D6112327301F7600F6B33B /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		D5D611252730259900F6B33B /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D5D611292730267800F6B33B /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		D5D6112D2730273E00F6B33B /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 		D5D6110D2730198000F6B33B /* FriendsContact */ = {
 			isa = PBXGroup;
 			children = (
+				D5D6112D2730273E00F6B33B /* Friend+CoreDataProperties.swift */,
+				D5D611252730259900F6B33B /* Friend+CoreDataClass.swift */,
+				D5D611292730267800F6B33B /* FileManager+Extension.swift */,
 				D5D6110E2730198000F6B33B /* FriendsContactApp.swift */,
 				D5D611102730198000F6B33B /* ContentView.swift */,
 				D5D6112327301F7600F6B33B /* AddView.swift */,
@@ -151,10 +160,13 @@
 			files = (
 				D5D611182730198400F6B33B /* Persistence.swift in Sources */,
 				D5D611112730198000F6B33B /* ContentView.swift in Sources */,
+				D5D6112E2730273E00F6B33B /* Friend+CoreDataProperties.swift in Sources */,
 				D5D6112427301F7600F6B33B /* AddView.swift in Sources */,
 				D5D6112227301AA600F6B33B /* ImagePicker.swift in Sources */,
 				D5D6111B2730198400F6B33B /* FriendsContact.xcdatamodeld in Sources */,
+				D5D611272730259900F6B33B /* Friend+CoreDataClass.swift in Sources */,
 				D5D6110F2730198000F6B33B /* FriendsContactApp.swift in Sources */,
+				D5D6112A2730267800F6B33B /* FileManager+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

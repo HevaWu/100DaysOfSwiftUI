@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddView: View {
+    @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
     
     @State private var image: Image? = nil
@@ -58,7 +59,21 @@ struct AddView: View {
     }
     
     func saveFriend() {
-        print("Save Friend")
+        do {
+            let newId = UUID()
+            let friend = Friend(context: moc)
+            friend.id = newId
+            friend.name = name
+            
+            if let jpegData = inputImage?.jpegData(compressionQuality: 0.8),
+               let filePath = FileManager.default.getDocumentDirectory()?.appendingPathComponent("\(newId).jpeg") {
+                try jpegData.write(to: filePath, options: [.atomic, .completeFileProtection])
+            }
+            
+            try moc.save()
+        } catch {
+            print("[AddView] Save Friend Failed.")
+        }
     }
     
     func loadImage() {

@@ -8,14 +8,12 @@
 import SwiftUI
 import CoreData
 
-struct Friend: Identifiable {
-    let id: UUID
-    let image: UIImage
-    let name: String
-}
-
 struct ContentView: View {
-    @State private var friends = [Friend]()
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(
+        entity: Friend.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Friend.name, ascending: true)]
+    ) var friends: FetchedResults<Friend>
     
     @State private var showAddView = false
     
@@ -23,11 +21,15 @@ struct ContentView: View {
         NavigationView {
             List(friends) { friend in
                 HStack {
-                    Image(uiImage: friend.image)
+                    Image(uiImage: friend.profileImage ?? UIImage(systemName: "person.circle")!)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 50)
                         .clipShape(Circle())
                     
-                    Text(friend.name)
+                    Text(friend.wrappedName)
                 }
+                .frame(maxHeight: 50)
             }
             .navigationBarTitle(Text("Friends Contact"))
             .navigationBarItems(trailing: Button(action: {
@@ -39,7 +41,7 @@ struct ContentView: View {
                 // show dialog ask user save or not
             }, content: {
                 // update to Edit View
-                AddView()
+                AddView().environment(\.managedObjectContext, moc)
             })
         }
     }
