@@ -20,16 +20,20 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(friends) { friend in
-                HStack {
-                    Image(uiImage: friend.profileImage ?? UIImage(systemName: "person.circle")!)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: 50)
-                        .clipShape(Circle())
-                    
-                    Text(friend.wrappedName)
+                NavigationLink {
+                    DetailView(friend: friend)
+                } label: {
+                    HStack {
+                        Image(uiImage: friend.profileImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 50)
+                            .clipShape(Circle())
+                        
+                        Text(friend.wrappedName)
+                    }
+                    .frame(maxHeight: 50)
                 }
-                .frame(maxHeight: 50)
             }
             .navigationBarTitle(Text("Friends Contact"))
             .navigationBarItems(trailing: Button(action: {

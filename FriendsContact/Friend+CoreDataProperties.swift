@@ -24,13 +24,14 @@ extension Friend {
         return name ?? "Unknown Name"
     }
     
-    var profileImage: UIImage? {
+    var profileImage: UIImage {
         guard let id = id,
               let url = FileManager.default.getDocumentDirectory()?.appendingPathComponent("\(id).jpeg"),
-              let data = try? Data(contentsOf: url) else {
-                  return nil
+              let data = try? Data(contentsOf: url),
+                let uiImage = UIImage(data: data) else {
+                  return UIImage(systemName: "person.circle")!
               }
-        return UIImage(data: data)
+        return uiImage
     }
 }
 
