@@ -10,8 +10,11 @@ import SwiftUI
 struct AddView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @State var image: Image? = nil
-    @State var name: String = ""
+    @State private var image: Image? = nil
+    @State private var name: String = ""
+    
+    @State private var inputImage: UIImage? = nil
+    @State private var showImagePicker = false
     
     var body: some View {
         NavigationView {
@@ -19,7 +22,6 @@ struct AddView: View {
                 ZStack {
                     Rectangle()
                         .fill(Color.secondary)
-                        .frame(width: 400, height: 400)
                     
                     if let image = image {
                         image
@@ -27,6 +29,7 @@ struct AddView: View {
                             .scaledToFit()
                     }
                 }
+                .frame(width: 400, height: 400)
                 
                 Form {
                     HStack {
@@ -45,7 +48,12 @@ struct AddView: View {
             }, label: {
                 Text("Save")
             }))
-            .onAppear(perform: presentImagePicker)
+            .onAppear(perform: {
+                showImagePicker = true
+            })
+            .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
+                ImagePicker(image: $inputImage)
+            }
         }
     }
     
@@ -53,8 +61,9 @@ struct AddView: View {
         print("Save Friend")
     }
     
-    func presentImagePicker() {
-        print("Present Image Picker")
+    func loadImage() {
+        guard let input = inputImage else { return }
+        image = Image(uiImage: input)
     }
 }
 
