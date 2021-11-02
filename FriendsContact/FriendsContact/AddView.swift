@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct AddView: View {
     @Environment(\.managedObjectContext) var moc
@@ -16,6 +17,12 @@ struct AddView: View {
     
     @State private var inputImage: UIImage? = nil
     @State private var showImagePicker = false
+    
+    @State private var centerCoordinator = CLLocationCoordinate2D()
+    @State private var selectedPlace: CodableMKPointAnnotation?
+    @State private var showPlaceDetails = false
+    
+    private let locationFetcher = LocationFetcher()
     
     var body: some View {
         NavigationView {
@@ -30,7 +37,7 @@ struct AddView: View {
                             .scaledToFit()
                     }
                 }
-                .frame(width: 400, height: 400)
+                .frame(width: 200, height: 200)
                 
                 Form {
                     HStack {
@@ -40,7 +47,35 @@ struct AddView: View {
                         TextField("Please input your name", text: $name)
                     }
                 }
+                .frame(maxHeight: 100)
+                
+                ZStack {
+                    MapView(
+                        centerCoordinator: $centerCoordinator,
+                        selectedPlace: $selectedPlace,
+                        showPlaceDetails: $showPlaceDetails
+                    )
+                        .edgesIgnoringSafeArea(.all)
                     
+                    CenterCircleView()
+                    
+                    VStack {
+                        HStack {
+                            Button(action: readLocation) {
+                                Text("Read Current Location")
+                                    .font(.headline)
+                                    .padding()
+                                    .foregroundColor(.blue)
+                                    .background(Color.white)
+                                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                            }
+                            .padding()
+
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                }
             }
             .navigationBarTitle(Text("New Friend"))
             .navigationBarItems(trailing: Button(action: {
@@ -51,11 +86,24 @@ struct AddView: View {
             }))
             .onAppear(perform: {
                 showImagePicker = true
+                locationFetcher.run()
             })
             .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
                 ImagePicker(image: $inputImage)
             }
         }
+    }
+    
+    func readLocation() {
+        guard let location = locationFetcher.lastKnownPlace else { return }
+        print("[AddView] current location is \(location)")
+        centerCoordinator = location
+        
+        let annotation = CodableMKPointAnnotation()
+        annotation.title = "Current Location"
+        annotation.subtitle = "\(location)"
+        annotation.coordinate = location
+        selectedPlace = annotation
     }
     
     func saveFriend() {
@@ -68,6 +116,12 @@ struct AddView: View {
             if let jpegData = inputImage?.jpegData(compressionQuality: 0.8),
                let filePath = FileManager.default.getDocumentDirectory()?.appendingPathComponent("\(newId).jpeg") {
                 try jpegData.write(to: filePath, options: [.atomic, .completeFileProtection])
+            }
+            
+            if let selectedPlace = selectedPlace,
+               let locationFilePath = FileManager.default.getDocumentDirectory()?.appendingPathComponent("location_\(newId)") {
+                let locationData = try JSONEncoder().encode(selectedPlace)
+                try locationData.write(to: locationFilePath, options: [.atomic, .completeFileProtection])
             }
             
             try moc.save()

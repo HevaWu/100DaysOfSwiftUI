@@ -2,13 +2,13 @@
 //  Friend+CoreDataProperties.swift
 //  FriendsContact
 //
-//  Created by He Wu on 2021/11/01.
+//  Created by He Wu on 2021/11/02.
 //
 //
 
 import Foundation
 import CoreData
-import UIKit
+import MapKit
 
 
 extension Friend {
@@ -19,7 +19,8 @@ extension Friend {
 
     @NSManaged public var id: UUID?
     @NSManaged public var name: String?
-    
+    @NSManaged public var location: String?
+
     var wrappedName: String {
         return name ?? "Unknown Name"
     }
@@ -32,6 +33,16 @@ extension Friend {
                   return UIImage(systemName: "person.circle")!
               }
         return uiImage
+    }
+    
+    var currentLocation: CodableMKPointAnnotation {
+        guard let id = id,
+              let filePath = FileManager.default.getDocumentDirectory()?.appendingPathComponent("location_\(id)"),
+              let data = try? Data(contentsOf: filePath),
+              let location = try? JSONDecoder().decode(CodableMKPointAnnotation.self, from: data) else {
+                  return MKPointAnnotation.example
+              }
+        return location
     }
 }
 

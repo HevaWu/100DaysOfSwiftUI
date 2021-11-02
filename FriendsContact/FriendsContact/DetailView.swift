@@ -7,9 +7,14 @@
 
 import SwiftUI
 import CoreData
+import MapKit
 
 struct DetailView: View {
     var friend: Friend
+    
+    @State private var centerCoordinator = CLLocationCoordinate2D()
+    @State private var selectedPlace: CodableMKPointAnnotation?
+    @State private var showPlaceDetails = false
     
     var body: some View {
         VStack {
@@ -26,7 +31,18 @@ struct DetailView: View {
             
             Text(friend.wrappedName)
             
-            Spacer()
+            ZStack {
+                MapView(
+                    centerCoordinator: $centerCoordinator,
+                    selectedPlace: $selectedPlace,
+                    showPlaceDetails: $showPlaceDetails
+                )
+                    .edgesIgnoringSafeArea(.all)
+            }
+        }
+        .onAppear {
+            centerCoordinator = friend.currentLocation.coordinate
+            selectedPlace = friend.currentLocation
         }
     }
 }

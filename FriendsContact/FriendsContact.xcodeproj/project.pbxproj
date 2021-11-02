@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D568A38727315D4C00748FCC /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568A38627315D4C00748FCC /* MapView.swift */; };
+		D568A3892731617B00748FCC /* CenterCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568A3882731617B00748FCC /* CenterCircleView.swift */; };
+		D568A38F2731650D00748FCC /* MKPointAnnotation+ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568A38E2731650D00748FCC /* MKPointAnnotation+ObservableObject.swift */; };
+		D568A3912731663E00748FCC /* CodableMKPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568A3902731663E00748FCC /* CodableMKPointAnnotation.swift */; };
+		D568A39327316B3500748FCC /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D568A39227316B3500748FCC /* LocationFetcher.swift */; };
 		D5D6110F2730198000F6B33B /* FriendsContactApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6110E2730198000F6B33B /* FriendsContactApp.swift */; };
 		D5D611112730198000F6B33B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D611102730198000F6B33B /* ContentView.swift */; };
 		D5D611132730198400F6B33B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D611122730198400F6B33B /* Assets.xcassets */; };
@@ -22,6 +27,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D568A38627315D4C00748FCC /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D568A3882731617B00748FCC /* CenterCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterCircleView.swift; sourceTree = "<group>"; };
+		D568A38E2731650D00748FCC /* MKPointAnnotation+ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation+ObservableObject.swift"; sourceTree = "<group>"; };
+		D568A3902731663E00748FCC /* CodableMKPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableMKPointAnnotation.swift; sourceTree = "<group>"; };
+		D568A39227316B3500748FCC /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		D5D6110B2730198000F6B33B /* FriendsContact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendsContact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D6110E2730198000F6B33B /* FriendsContactApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsContactApp.swift; sourceTree = "<group>"; };
 		D5D611102730198000F6B33B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,8 +83,13 @@
 				D5D6110E2730198000F6B33B /* FriendsContactApp.swift */,
 				D5D611102730198000F6B33B /* ContentView.swift */,
 				D5D6112327301F7600F6B33B /* AddView.swift */,
+				D568A39227316B3500748FCC /* LocationFetcher.swift */,
+				D568A38E2731650D00748FCC /* MKPointAnnotation+ObservableObject.swift */,
+				D568A3902731663E00748FCC /* CodableMKPointAnnotation.swift */,
 				D5D6113127302E4200F6B33B /* DetailView.swift */,
 				D5D6112127301AA600F6B33B /* ImagePicker.swift */,
+				D568A38627315D4C00748FCC /* MapView.swift */,
+				D568A3882731617B00748FCC /* CenterCircleView.swift */,
 				D5D611122730198400F6B33B /* Assets.xcassets */,
 				D5D611172730198400F6B33B /* Persistence.swift */,
 				D5D611192730198400F6B33B /* FriendsContact.xcdatamodeld */,
@@ -161,11 +176,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D568A3912731663E00748FCC /* CodableMKPointAnnotation.swift in Sources */,
 				D5D611182730198400F6B33B /* Persistence.swift in Sources */,
+				D568A38F2731650D00748FCC /* MKPointAnnotation+ObservableObject.swift in Sources */,
 				D5D611112730198000F6B33B /* ContentView.swift in Sources */,
 				D5D6112E2730273E00F6B33B /* Friend+CoreDataProperties.swift in Sources */,
+				D568A3892731617B00748FCC /* CenterCircleView.swift in Sources */,
+				D568A38727315D4C00748FCC /* MapView.swift in Sources */,
 				D5D6113227302E4200F6B33B /* DetailView.swift in Sources */,
 				D5D6112427301F7600F6B33B /* AddView.swift in Sources */,
+				D568A39327316B3500748FCC /* LocationFetcher.swift in Sources */,
 				D5D6112227301AA600F6B33B /* ImagePicker.swift in Sources */,
 				D5D6111B2730198400F6B33B /* FriendsContact.xcdatamodeld in Sources */,
 				D5D611272730259900F6B33B /* Friend+CoreDataClass.swift in Sources */,
@@ -304,6 +324,7 @@
 				DEVELOPMENT_TEAM = Q76375S8R8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Read location when register friends";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -334,6 +355,7 @@
 				DEVELOPMENT_TEAM = Q76375S8R8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Read location when register friends";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
