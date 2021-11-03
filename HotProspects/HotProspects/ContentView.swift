@@ -32,9 +32,10 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            EditView().environmentObject(user)
-            DisplayView().environmentObject(user)
+            EditView()
+            DisplayView()
         }
+        .environmentObject(user)
     }
 }
 
