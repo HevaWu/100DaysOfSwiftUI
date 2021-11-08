@@ -10,6 +10,7 @@
 		D5932263273551F200F45204 /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = D5932262273551F200F45204 /* SamplePackage */; };
 		D59322652739509300F45204 /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59322642739509200F45204 /* ProspectsView.swift */; };
 		D5932267273950A000F45204 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5932266273950A000F45204 /* MeView.swift */; };
+		D5932269273952BF00F45204 /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5932268273952BF00F45204 /* Prospect.swift */; };
 		D5FE6D7F2732AAB300A5EBA3 /* HotProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FE6D7E2732AAB300A5EBA3 /* HotProspectsApp.swift */; };
 		D5FE6D812732AAB300A5EBA3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FE6D802732AAB300A5EBA3 /* ContentView.swift */; };
 		D5FE6D832732AAB500A5EBA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5FE6D822732AAB500A5EBA3 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		D59322642739509200F45204 /* ProspectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectsView.swift; sourceTree = "<group>"; };
 		D5932266273950A000F45204 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
+		D5932268273952BF00F45204 /* Prospect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospect.swift; sourceTree = "<group>"; };
 		D5FE6D7B2732AAB300A5EBA3 /* HotProspects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotProspects.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5FE6D7E2732AAB300A5EBA3 /* HotProspectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotProspectsApp.swift; sourceTree = "<group>"; };
 		D5FE6D802732AAB300A5EBA3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				D5FE6D7E2732AAB300A5EBA3 /* HotProspectsApp.swift */,
 				D5FE6D802732AAB300A5EBA3 /* ContentView.swift */,
 				D59322642739509200F45204 /* ProspectsView.swift */,
+				D5932268273952BF00F45204 /* Prospect.swift */,
 				D5932266273950A000F45204 /* MeView.swift */,
 				D5FE6D822732AAB500A5EBA3 /* Assets.xcassets */,
 				D5FE6D872732AAB500A5EBA3 /* Persistence.swift */,
@@ -160,6 +163,7 @@
 				D5932267273950A000F45204 /* MeView.swift in Sources */,
 				D5FE6D882732AAB500A5EBA3 /* Persistence.swift in Sources */,
 				D5FE6D812732AAB300A5EBA3 /* ContentView.swift in Sources */,
+				D5932269273952BF00F45204 /* Prospect.swift in Sources */,
 				D59322652739509300F45204 /* ProspectsView.swift in Sources */,
 				D5FE6D7F2732AAB300A5EBA3 /* HotProspectsApp.swift in Sources */,
 				D5FE6D8B2732AAB500A5EBA3 /* HotProspects.xcdatamodeld in Sources */,
