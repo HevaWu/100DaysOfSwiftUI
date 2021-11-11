@@ -19,19 +19,21 @@ class Prospects: ObservableObject {
     static let savedKey = "savedData"
     
     init() {
-        if let data = UserDefaults.standard.data(forKey: Self.savedKey) {
-            if let decoded = try? JSONDecoder().decode([Prospect].self, from: data) {
-                people = decoded
-                return
-            }
+        if let filePath = Self.getFilePathUrl(),
+           let data = try? Data(contentsOf: filePath),
+           let decoded = try? JSONDecoder().decode([Prospect].self, from: data) {
+            people = decoded
+            return
         }
         
         people = []
     }
     
     func save() {
-        if let encoded = try? JSONEncoder().encode(people) {
-            UserDefaults.standard.set(encoded, forKey: Self.savedKey)
+        if let filePath = Self.getFilePathUrl(),
+           let data = try? JSONEncoder().encode(people) {
+//            print(data, filePath)
+            try? data.write(to: filePath, options: [.atomic, .completeFileProtection])
         }
     }
     
@@ -44,5 +46,9 @@ class Prospects: ObservableObject {
     func add(_ prospect: Prospect) {
         people.append(prospect)
         save()
+    }
+    
+    static func getFilePathUrl() -> URL? {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("savedData.json")
     }
 }
