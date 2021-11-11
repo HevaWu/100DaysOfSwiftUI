@@ -16,8 +16,15 @@ struct ProspectsView: View {
         case uncontacted
     }
     
+    enum SortType {
+        case name
+        case recent
+    }
+    
     @EnvironmentObject var prospects: Prospects
     @State private var isShowScanner = false
+    @State private var sortType: SortType = .recent
+    @State private var isShowSortMenu = false
     
     let filter: FilterType
     
@@ -32,15 +39,32 @@ struct ProspectsView: View {
         }
     }
     
+    var sortedProspects: [Prospect] {
+        switch sortType {
+        case .name:
+            return prospects.people.sorted(by: { $0.name < $1.name })
+        case .recent:
+            return prospects.people.reversed()
+        }
+    }
+    
     var filteredProspects: [Prospect] {
         switch filter {
         case .none:
-            return prospects.people
+            return sortedProspects
         case .contacted:
-            return prospects.people.filter { $0.isContacted }
+            return sortedProspects.filter { $0.isContacted }
         case .uncontacted:
-            return prospects.people.filter { !$0.isContacted }
+            return sortedProspects.filter { !$0.isContacted }
         }
+    }
+    
+    var simulateName: String {
+        "test\(Int.random(in: 0..<10))"
+    }
+    
+    var simulateEmail: String {
+        "test_email_\(Int.random(in: 0..<10))@email.com"
     }
     
     var body: some View {
@@ -72,17 +96,36 @@ struct ProspectsView: View {
                     }
                 }
             }
-                .navigationBarTitle(Text(title))
-                .navigationBarItems(trailing: Button(action: {
+            .navigationBarTitle(Text(title))
+            .navigationBarItems(
+                leading: Button(action: {
+                    isShowSortMenu = true
+                }, label: {
+                    Text("Sort By")
+                }),
+                trailing: Button(action: {
                     isShowScanner = true
                 }, label: {
                     Image(systemName: "qrcode.viewfinder")
                     Text("Scan")
                 })
+            )
+            .sheet(isPresented: $isShowScanner) {
+                CodeScannerView(codeTypes: [.qr], simulatedData: "\(simulateName)\n\(simulateEmail)", completion: handleScan(result:))
+            }
+            .actionSheet(isPresented: $isShowSortMenu) {
+                ActionSheet(
+                    title: Text("Select Sort Type"),
+                    buttons: [
+                        .default(Text("Name")) {
+                            sortType = .name
+                        },
+                        .default(Text("Recent")) {
+                            sortType = .recent
+                        }
+                    ]
                 )
-                .sheet(isPresented: $isShowScanner) {
-                    CodeScannerView(codeTypes: [.qr], simulatedData: "test\ntest@email.com", completion: handleScan(result:))
-                }
+            }
         }
     }
     
