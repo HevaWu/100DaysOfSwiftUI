@@ -10,7 +10,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
-            .padding()
+            .onTapGesture(count: 2) {
+                print("Double tapped")
+            }
     }
 }
 
