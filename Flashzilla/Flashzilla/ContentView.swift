@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
-            .onTapGesture(count: 2) {
-                print("Double tapped")
+            .onLongPressGesture(minimumDuration: 2) {
+                print("Long Pressed")
             }
     }
 }
