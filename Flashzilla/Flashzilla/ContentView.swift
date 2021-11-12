@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var currentAmount: CGFloat = 0
-    @State private var finalAmount: CGFloat = 1
+    @State private var currentAmount: Angle = .degrees(0)
+    @State private var finalAmount: Angle = .degrees(0)
     
     var body: some View {
         Text("Hello, world!")
-            .scaleEffect(finalAmount + currentAmount)
+            .rotationEffect(finalAmount + currentAmount)
             .gesture(
-                MagnificationGesture()
-                    .onChanged({ amount in
-                        currentAmount = amount - 1
+                RotationGesture()
+                    .onChanged({ angle in
+                        currentAmount = angle
                     })
-                    .onEnded({ amount in
+                    .onEnded({ angle in
                         finalAmount += currentAmount
-                        currentAmount = 0
+                        currentAmount = .degrees(0)
                     })
             )
     }
