@@ -14,8 +14,8 @@ struct ContentView: View {
     
     var body: some View {
         Text("Hello World")
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                print("Moving back to the foreground")
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.userDidTakeScreenshotNotification)) { _ in
+                print("User took a screenshot")
             }
     }
 }
