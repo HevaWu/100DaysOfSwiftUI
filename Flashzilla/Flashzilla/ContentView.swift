@@ -14,13 +14,8 @@ struct ContentView: View {
     
     var body: some View {
         Text("Hello World")
-            .onReceive(timer) { time in
-                if counter == 5 {
-                    timer.upstream.connect().cancel()
-                } else {
-                    print("The time is now \(time)")
-                }
-                counter += 1
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                print("Moving to the background")
             }
     }
 }
