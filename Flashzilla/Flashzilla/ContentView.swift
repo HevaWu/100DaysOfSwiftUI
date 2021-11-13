@@ -8,21 +8,26 @@
 import SwiftUI
 import CoreHaptics
 
+func withoutOptionalAnimation<Result>(_ animation: Animation? = .default, _ body: () throws -> Result) rethrows -> Result {
+    if UIAccessibility.isReduceMotionEnabled {
+        return try body()
+    } else {
+        return try withAnimation(animation, body)
+    }
+}
+
 struct ContentView: View {
-    @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
+    @Environment(\.accessibilityReduceMotion) var reduceMotion
+    @State private var scale: CGFloat = 1
     
     var body: some View {
-        HStack {
-            if differentiateWithoutColor {
-                Image(systemName: "checkmark.circle")
+        Text("Hello World")
+            .scaleEffect(scale)
+            .onTapGesture {
+                withoutOptionalAnimation {
+                    scale *= 1.5
+                }
             }
-            
-            Text("Success")
-        }
-        .padding()
-        .background(differentiateWithoutColor ? Color.black : Color.green)
-        .foregroundColor(Color.white)
-        .clipShape(Capsule())
     }
 }
 
