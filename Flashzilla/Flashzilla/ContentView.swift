@@ -9,16 +9,13 @@ import SwiftUI
 import CoreHaptics
 
 struct ContentView: View {
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
-        VStack {
-            Text("Hello")
-            Spacer().frame(height: 100)
-            Text("World")
-        }
-        .contentShape(Rectangle())
-        .onTapGesture {
-            print("Vstack is tapped")
-        }
+        Text("Hello World")
+            .onReceive(timer) { time in
+                print("The time is now \(time)")
+            }
     }
 }
 
