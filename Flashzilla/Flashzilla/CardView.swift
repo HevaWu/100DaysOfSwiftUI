@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CardView: View {
     let card: Card
+    var removal: (() -> Void)? = nil
+    
     @State private var isShowAnswer = false
     @State private var offset = CGSize.zero
 
@@ -44,6 +46,7 @@ struct CardView: View {
                 .onEnded { _ in
                     if abs(offset.width) > 100 {
                         // remove the card
+                        removal?()
                     } else {
                         offset = .zero
                     }
