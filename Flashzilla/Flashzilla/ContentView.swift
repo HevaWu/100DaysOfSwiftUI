@@ -11,6 +11,7 @@ import CoreHaptics
 struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     
+    @State private var isActive = true
     @State private var cards: [Card] = Array(repeating: Card.example, count: 10)
     @State private var timeRemaining = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -70,9 +71,16 @@ struct ContentView: View {
             }
         }
         .onReceive(timer) { time in
+            guard isActive else { return }
             if timeRemaining > 0 {
                 timeRemaining -= 1
             }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+            isActive = false
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            isActive = true
         }
     }
     
