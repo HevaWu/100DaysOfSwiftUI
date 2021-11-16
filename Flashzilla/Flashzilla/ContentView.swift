@@ -13,7 +13,7 @@ struct ContentView: View {
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
     
     @State private var isActive = true
-    @State private var cards: [Card] = Array(repeating: Card.example, count: 10)
+    @State private var cards: [Card] = [Card]()
     @State private var timeRemaining = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -134,6 +134,10 @@ struct ContentView: View {
                 isActive = true
             }
         }
+        .sheet(isPresented: $showEditScreen, onDismiss: resetCards) {
+            EditCards()
+        }
+        .onAppear(perform: resetCards)
     }
     
     func removeCard(at index: Int) {
@@ -147,9 +151,17 @@ struct ContentView: View {
     }
     
     func resetCards() {
-        cards = [Card](repeating: Card.example, count: 10)
         timeRemaining = 100
         isActive = true
+        loadData()
+    }
+    
+    func loadData() {
+        if let data = UserDefaults.standard.data(forKey: "Cards") {
+            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
+                cards = decoded
+            }
+        }
     }
 }
 
