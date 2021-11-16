@@ -17,6 +17,8 @@ struct ContentView: View {
     @State private var timeRemaining = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    @State private var showEditScreen = false
+    
     var body: some View {
         ZStack {
             Image(decorative: "background")
@@ -58,6 +60,26 @@ struct ContentView: View {
                         .clipShape(Capsule())
                 }
             }
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        showEditScreen = true
+                    }, label: {
+                        Image(systemName: "plus.circle")
+                            .padding()
+                            .background(.black.opacity(0.7))
+                            .clipShape(Circle())
+                    })
+                }
+                
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .font(.largeTitle)
+            .padding()
             
             if differentiateWithoutColor || accessibilityEnabled {
                 VStack {
