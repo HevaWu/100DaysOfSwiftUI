@@ -19,6 +19,7 @@ struct ContentView: View {
     
     @State private var showEditScreen = false
     
+    @State private var showTimeoutAlert = false
     @State private var hapticEngine: CHHapticEngine?
     
     var body: some View {
@@ -127,6 +128,7 @@ struct ContentView: View {
             if timeRemaining > 0 {
                 timeRemaining -= 1
             } else {
+                showTimeoutAlert = true
                 runTimeoutHaptics()
                 isActive = false
             }
@@ -142,6 +144,9 @@ struct ContentView: View {
         .sheet(isPresented: $showEditScreen, onDismiss: resetCards) {
             EditCards()
         }
+        .alert(isPresented: $showTimeoutAlert, content: {
+            Alert(title: Text("Timeout"), message: Text("You are run out of time."), dismissButton: .default(Text("Got it.")))
+        })
         .onAppear(perform: {
             resetCards()
             prepareHaptics()
@@ -159,7 +164,7 @@ struct ContentView: View {
     }
     
     func resetCards() {
-        timeRemaining = 100
+        timeRemaining = 10
         isActive = true
         loadData()
     }
