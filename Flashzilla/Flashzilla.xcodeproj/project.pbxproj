@@ -14,6 +14,7 @@
 		D51132612741109E0030F50B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51132602741109E0030F50B /* Card.swift */; };
 		D5113263274112170030F50B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5113262274112170030F50B /* CardView.swift */; };
 		D51132652743F0610030F50B /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51132642743F0600030F50B /* EditCards.swift */; };
+		D51132672745398F0030F50B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51132662745398D0030F50B /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		D51132602741109E0030F50B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		D5113262274112170030F50B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		D51132642743F0600030F50B /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
+		D51132662745398D0030F50B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				D5113262274112170030F50B /* CardView.swift */,
 				D5113252273EA7F90030F50B /* FlashzillaApp.swift */,
 				D5113254273EA7F90030F50B /* ContentView.swift */,
+				D51132662745398D0030F50B /* SettingsView.swift */,
 				D51132642743F0600030F50B /* EditCards.swift */,
 				D51132602741109E0030F50B /* Card.swift */,
 				D5113256273EA7FB0030F50B /* Assets.xcassets */,
@@ -149,6 +152,7 @@
 				D5113255273EA7F90030F50B /* ContentView.swift in Sources */,
 				D51132612741109E0030F50B /* Card.swift in Sources */,
 				D5113263274112170030F50B /* CardView.swift in Sources */,
+				D51132672745398F0030F50B /* SettingsView.swift in Sources */,
 				D51132652743F0610030F50B /* EditCards.swift in Sources */,
 				D5113253273EA7F90030F50B /* FlashzillaApp.swift in Sources */,
 			);

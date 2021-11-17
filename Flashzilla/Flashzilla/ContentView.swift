@@ -22,6 +22,9 @@ struct ContentView: View {
     @State private var showTimeoutAlert = false
     @State private var hapticEngine: CHHapticEngine?
     
+    @State private var showSettings = false
+    @State private var enableTryWrongCardAgain: Bool = true
+    
     var body: some View {
         ZStack {
             Image(decorative: "background")
@@ -43,7 +46,7 @@ struct ContentView: View {
                 
                 ZStack {
                     ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: cards[index]) {
+                        CardView(card: cards[index], enableTryWrongCardAgain: enableTryWrongCardAgain) {
                             withAnimation {
                                 removeCard(at: index)
                             }
@@ -66,6 +69,15 @@ struct ContentView: View {
             
             VStack {
                 HStack {
+                    Button(action: {
+                        showSettings = true
+                    }, label: {
+                        Image(systemName: "gearshape.circle")
+                            .padding()
+                            .background(.black.opacity(0.7))
+                            .clipShape(Circle())
+                    })
+                    
                     Spacer()
                     
                     Button(action: {
@@ -144,6 +156,9 @@ struct ContentView: View {
         .sheet(isPresented: $showEditScreen, onDismiss: resetCards) {
             EditCards()
         }
+        .sheet(isPresented: $showSettings, content: {
+            SettingsView(enableTryWrongCardAgain: $enableTryWrongCardAgain)
+        })
         .alert(isPresented: $showTimeoutAlert, content: {
             Alert(title: Text("Timeout"), message: Text("You are run out of time."), dismissButton: .default(Text("Got it.")))
         })
@@ -164,7 +179,7 @@ struct ContentView: View {
     }
     
     func resetCards() {
-        timeRemaining = 10
+        timeRemaining = 100
         isActive = true
         loadData()
     }
@@ -176,7 +191,7 @@ struct ContentView: View {
             }
         }
     }
-    
+
     // MARK: Timeout Haptics
     
     func prepareHaptics() {
@@ -220,6 +235,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+.previewInterfaceOrientation(.landscapeRight)
     }
 }
 

@@ -12,6 +12,7 @@ struct CardView: View {
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
     
     let card: Card
+    let enableTryWrongCardAgain: Bool
     var removal: (() -> Void)? = nil
     
     @State private var isShowAnswer = false
@@ -70,10 +71,17 @@ struct CardView: View {
                     if abs(offset.width) > 100 {
                         if offset.width > 0 {
                             feedback.notificationOccurred(.success)
+                            removal?()
                         } else {
                             feedback.notificationOccurred(.error)
+                        
+                            if enableTryWrongCardAgain {
+                                // allow user try again
+                                offset = .zero
+                            } else {
+                                removal?()
+                            }
                         }
-                        removal?()
                     } else {
                         offset = .zero
                     }
@@ -88,7 +96,7 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: .example)
+        CardView(card: .example, enableTryWrongCardAgain: true)
 .previewInterfaceOrientation(.landscapeLeft)
     }
 }
