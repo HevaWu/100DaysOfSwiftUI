@@ -19,6 +19,8 @@ struct ContentView: View {
     
     @State private var showEditScreen = false
     
+    @State private var hapticEngine: CHHapticEngine?
+    
     var body: some View {
         ZStack {
             Image(decorative: "background")
@@ -124,6 +126,9 @@ struct ContentView: View {
             guard isActive else { return }
             if timeRemaining > 0 {
                 timeRemaining -= 1
+            } else {
+                runTimeoutHaptics()
+                isActive = false
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
@@ -137,7 +142,10 @@ struct ContentView: View {
         .sheet(isPresented: $showEditScreen, onDismiss: resetCards) {
             EditCards()
         }
-        .onAppear(perform: resetCards)
+        .onAppear(perform: {
+            resetCards()
+            prepareHaptics()
+        })
     }
     
     func removeCard(at index: Int) {
@@ -161,6 +169,45 @@ struct ContentView: View {
             if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
                 cards = decoded
             }
+        }
+    }
+    
+    // MARK: Timeout Haptics
+    
+    func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
+            return
+        }
+        
+        do {
+            hapticEngine = try CHHapticEngine()
+            try hapticEngine?.start()
+        } catch {
+            print("Prepare HapticEngine Failed")
+        }
+    }
+    
+    func runTimeoutHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
+            return
+        }
+        
+        prepareHaptics()
+        
+        var events = [CHHapticEvent]()
+        
+        for i in stride(from: 0, to: 1, by: 0.2) {
+            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(i))
+            let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: Float(1-i))
+            events.append(CHHapticEvent(eventType: CHHapticEvent.EventType.hapticTransient, parameters: [intensity, sharpness], relativeTime: i))
+        }
+        
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try hapticEngine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Timeout Haptic not run well. \(error.localizedDescription)")
         }
     }
 }
