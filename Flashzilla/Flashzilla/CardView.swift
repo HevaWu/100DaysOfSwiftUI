@@ -18,6 +18,7 @@ struct CardView: View {
     @State private var isShowAnswer = false
     @State private var offset = CGSize.zero
     @State private var feedback = UINotificationFeedbackGenerator()
+    @State private var backgroundColor: Color = .white
 
     var body: some View {
         ZStack {
@@ -32,7 +33,7 @@ struct CardView: View {
                     differentiateWithoutColor
                     ? nil
                     : RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(offset.width > 0 ? Color.green : Color.red)
+                        .fill(backgroundColor)
                 )
                 .shadow(radius: 10)
             
@@ -65,6 +66,13 @@ struct CardView: View {
             DragGesture()
                 .onChanged { gesture in
                     offset = gesture.translation
+                    if offset.width > 0 {
+                        backgroundColor = .green
+                    } else if offset.width < 0 {
+                        backgroundColor = .red
+                    } else {
+                        backgroundColor = .white
+                    }
                     feedback.prepare()
                 }
                 .onEnded { _ in
