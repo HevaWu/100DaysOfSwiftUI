@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Color.red
+        Text("Live long and prosper")
+            .frame(width: 300, height: 300, alignment: .topLeading)
     }
 }
 
