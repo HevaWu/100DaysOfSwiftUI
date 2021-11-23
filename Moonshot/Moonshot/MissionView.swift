@@ -17,6 +17,8 @@ struct MissionView: View {
     let astronauts: [CrewMember]
     let missions: [Mission]
     
+    @State private var imageGeoMinY: CGFloat = 0.0
+    
     var body: some View {
         GeometryReader { geo in
             ScrollView(.vertical) {
@@ -24,9 +26,15 @@ struct MissionView: View {
                     Image(mission.imageName)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: geo.size.width * 0.7)
+                        .frame(maxWidth: geo.size.width * 0.8 * max(0.8, 1 - Double((geo.frame(in: .global).minY - imageGeoMinY) / geo.frame(in: .global).minY)))
                         .padding(.top)
                         .accessibilityHidden(true)
+                        .background(GeometryReader { imageGeo -> Color in
+                            DispatchQueue.main.async {
+                                imageGeoMinY = imageGeo.frame(in: .global).minY
+                            }
+                            return Color.white
+                        })
                     
                     Text("Launch Date: \(mission.formattedLaunchDate)")
                         .padding()
@@ -63,7 +71,7 @@ struct MissionView: View {
                                 .padding(.horizontal)
                             }
                         )
-                        .buttonStyle(PlainButtonStyle())
+                            .buttonStyle(PlainButtonStyle())
                     }
                     
                     Spacer(minLength: 25)
