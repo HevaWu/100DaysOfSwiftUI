@@ -20,31 +20,36 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                TextField("Enter your word", text: $newWord, onCommit: addNewWord)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .autocapitalization(.none)
-                    .padding()
-                
-                List(usedWords, id: \.self) { word in
-                    HStack {
-                        Image(systemName: "\(word.count).circle")
-                        Text(word)
+            GeometryReader { geo in
+                VStack {
+                    TextField("Enter your word", text: $newWord, onCommit: addNewWord)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .autocapitalization(.none)
+                        .padding()
+                    
+                    List(usedWords, id: \.self) { word in
+                        GeometryReader { wordGeo in
+                            HStack {
+                                Image(systemName: "\(word.count).circle")
+                                Text(word)
+                            }
+                            .offset(x: max(0, wordGeo.frame(in: .global).minY + wordGeo.size.width - geo.frame(in: .global).maxY))
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel(Text("\(word), \(word.count) letters"))
+                        }
                     }
-                    .accessibilityElement(children: .ignore)
-                    .accessibilityLabel(Text("\(word), \(word.count) letters"))
+                    
+                    Text("Score: \(score)")
                 }
-                
-                Text("Score: \(score)")
+                .navigationBarTitle(rootWord)
+                .onAppear(perform: startGame)
+                .alert(isPresented: $showError, content: {
+                    Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                })
+                .navigationBarItems(
+                    leading: Button("Reset Start Word", action: resetGame)
+                )
             }
-            .navigationBarTitle(rootWord)
-            .onAppear(perform: startGame)
-            .alert(isPresented: $showError, content: {
-                Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-            })
-            .navigationBarItems(
-                leading: Button("Reset Start Word", action: resetGame)
-            )
         }
     }
     
