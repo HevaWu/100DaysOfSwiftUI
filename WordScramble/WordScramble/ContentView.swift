@@ -31,9 +31,16 @@ struct ContentView: View {
                         GeometryReader { wordGeo in
                             HStack {
                                 Image(systemName: "\(word.count).circle")
+                                    .foregroundColor(
+                                        Color(
+                                            red: Double(Int(wordGeo.frame(in: .global).minY) % Int(geo.size.height)) / Double(geo.size.height),
+                                            green: Double(1 - Double(Int(wordGeo.frame(in: .global).minY) % Int(geo.size.height)) / Double(geo.size.height)),
+                                            blue: Double(0.5 * Double(Int(wordGeo.frame(in: .global).minY) % Int(geo.size.height)) / Double(geo.size.height))
+                                        )
+                                    )
                                 Text(word)
                             }
-                            .offset(x: max(0, wordGeo.frame(in: .global).minY + wordGeo.size.width - geo.frame(in: .global).maxY))
+                            .offset(x: max(0, Double(wordGeo.frame(in: .global).minY + wordGeo.size.width - geo.frame(in: .global).maxY)))
                             .accessibilityElement(children: .ignore)
                             .accessibilityLabel(Text("\(word), \(word.count) letters"))
                         }
