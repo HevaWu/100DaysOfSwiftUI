@@ -22,7 +22,7 @@ struct ContentView: View {
                 }
                 .tag(0)
             
-            Text("Show Previous Result")
+            UserHistoryView()
                 .tabItem {
                     Image(systemName: "square.text.square")
                     Text("Result History")

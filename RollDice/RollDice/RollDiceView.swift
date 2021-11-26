@@ -15,16 +15,19 @@ struct RollDiceView: View {
     @State private var diceNumber = 0
     
     var body: some View {
-        VStack {
-            Button {
-                startRollingDice()
-            } label: {
-                Text("Start Game")
-            }
+        NavigationView {
+            VStack {
+                Button {
+                    startRollingDice()
+                } label: {
+                    Text("Start Game")
+                }
 
-            if isShowDice {
-                Text("\(diceNumber)")
+                if isShowDice {
+                    Text("\(diceNumber)")
+                }
             }
+            .navigationBarTitle(Text("Roll Dice"))
         }
     }
     
@@ -32,7 +35,6 @@ struct RollDiceView: View {
         diceNumber = Int.random(in: 1...4)
         diceHistory.results.append(diceNumber)
         
-        print(diceHistory.results)
         isShowDice = true
     }
 }
