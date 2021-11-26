@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RollDiceView: View {
+    @EnvironmentObject var diceHistory: DiceHistory
+    
     @State private var isShowDice = false
     
     @State private var diceNumber = 0
@@ -28,6 +30,9 @@ struct RollDiceView: View {
     
     private func startRollingDice() {
         diceNumber = Int.random(in: 1...4)
+        diceHistory.results.append(diceNumber)
+        
+        print(diceHistory.results)
         isShowDice = true
     }
 }

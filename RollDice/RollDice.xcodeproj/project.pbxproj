@@ -14,6 +14,7 @@
 		D57589662751116D003B7EC7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57589652751116D003B7EC7 /* Persistence.swift */; };
 		D57589692751116D003B7EC7 /* RollDice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D57589672751116D003B7EC7 /* RollDice.xcdatamodeld */; };
 		D5758970275113EC003B7EC7 /* RollDiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575896F275113EC003B7EC7 /* RollDiceView.swift */; };
+		D57589722751157F003B7EC7 /* DiceHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57589712751157F003B7EC7 /* DiceHistory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		D57589652751116D003B7EC7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D57589682751116D003B7EC7 /* RollDice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RollDice.xcdatamodel; sourceTree = "<group>"; };
 		D575896F275113EC003B7EC7 /* RollDiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollDiceView.swift; sourceTree = "<group>"; };
+		D57589712751157F003B7EC7 /* DiceHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceHistory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				D575895C27511169003B7EC7 /* RollDiceApp.swift */,
 				D575895E27511169003B7EC7 /* ContentView.swift */,
 				D575896F275113EC003B7EC7 /* RollDiceView.swift */,
+				D57589712751157F003B7EC7 /* DiceHistory.swift */,
 				D57589602751116D003B7EC7 /* Assets.xcassets */,
 				D57589652751116D003B7EC7 /* Persistence.swift */,
 				D57589672751116D003B7EC7 /* RollDice.xcdatamodeld */,
@@ -151,6 +154,7 @@
 				D575895D27511169003B7EC7 /* RollDiceApp.swift in Sources */,
 				D5758970275113EC003B7EC7 /* RollDiceView.swift in Sources */,
 				D57589692751116D003B7EC7 /* RollDice.xcdatamodeld in Sources */,
+				D57589722751157F003B7EC7 /* DiceHistory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

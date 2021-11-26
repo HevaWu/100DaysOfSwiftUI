@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    var diceHistory = DiceHistory()
+    
     @State private var selectedTab = 0
     
     var body: some View {
@@ -27,6 +29,7 @@ struct ContentView: View {
                 }
                 .tag(1)
         }
+        .environmentObject(diceHistory)
     }
 }
 
