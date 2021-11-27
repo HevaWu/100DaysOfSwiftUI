@@ -8,5 +8,5 @@
 import Foundation
 
 class DiceHistory: ObservableObject {
-    @Published var results = [Int]()
+    @Published var results = [Int: [Int]]()
 }

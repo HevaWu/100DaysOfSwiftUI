@@ -12,9 +12,18 @@ struct UserHistoryView: View {
     
     var body: some View {
         NavigationView {
-            List(diceHistory.results, id: \.self) { result in
-                Text("\(result)")
+            List {
+                ForEach(diceHistory.results.keys.sorted(), id: \.self) { diceSide in
+                    if let diceResults = diceHistory.results[diceSide] {
+                        Section(header: Text("\(diceSide)-sided")) {
+                            ForEach(diceResults, id: \.self) { diceResult in
+                                Text("\(diceResult)")
+                            }
+                        }
+                    }
+                }
             }
+            .listStyle(GroupedListStyle())
             .navigationBarTitle(Text("Results History"))
         }
     }

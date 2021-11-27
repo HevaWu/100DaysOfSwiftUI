@@ -10,30 +10,53 @@ import SwiftUI
 struct RollDiceView: View {
     @EnvironmentObject var diceHistory: DiceHistory
     
-    @State private var isShowDice = false
+    @State private var isShowDice = true
     
     @State private var diceNumber = 0
     
+    @State private var diceType = 0
+    let diceTypeList = [4, 6, 8, 10, 12, 20, 100]
+    
+    var selectedDiceSide: Int {
+        diceTypeList[diceType]
+    }
+    
     var body: some View {
         NavigationView {
-            VStack {
-                Button {
-                    startRollingDice()
-                } label: {
-                    Text("Start Game")
+            Form {
+                Section(header: Text("Pick Your Dice Side")) {
+                    Picker("Pick Your Dice Side", selection: $diceType) {
+                        ForEach(0..<diceTypeList.count) { index in
+                            Text("\(diceTypeList[index])")
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
 
                 if isShowDice {
-                    Text("\(diceNumber)")
+                    Section(header: Text("Dices")) {
+                        Text("\(diceNumber)")
+                            .frame(width: 300, height: 300, alignment: .center)
+                    }
                 }
             }
+            .navigationBarItems(trailing: Button {
+                startRollingDice()
+            } label: {
+                HStack {
+                    Image(systemName: "dice.fill")
+                    Text("Start")
+                        .font(.title2)
+                        .bold()
+                }
+            })
             .navigationBarTitle(Text("Roll Dice"))
         }
     }
     
     private func startRollingDice() {
-        diceNumber = Int.random(in: 1...4)
-        diceHistory.results.append(diceNumber)
+        diceNumber = Int.random(in: 1...selectedDiceSide)
+        diceHistory.results[selectedDiceSide, default: [Int]()].append(diceNumber)
         
         isShowDice = true
     }
