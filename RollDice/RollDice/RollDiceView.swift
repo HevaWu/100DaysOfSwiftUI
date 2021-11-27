@@ -10,11 +10,14 @@ import SwiftUI
 struct RollDiceView: View {
     @EnvironmentObject var diceHistory: DiceHistory
     
+    @State private var isShowAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    
     @State private var isShowDice = true
-    
     @State private var diceNumber = 0
-    
     @State private var diceType = 0
+    
     let diceTypeList = [4, 6, 8, 10, 12, 20, 100]
     
     var selectedDiceSide: Int {
@@ -56,17 +59,35 @@ struct RollDiceView: View {
                     }
                 }
             }
-            .navigationBarItems(trailing: Button {
-                startRollingDice()
-            } label: {
-                HStack {
-                    Image(systemName: "dice.fill")
-                    Text("Start")
-                        .font(.title2)
-                        .bold()
-                }
-            })
+            .navigationBarItems(
+                leading: Button(action: {
+                    // show reset game alert
+                    alertTitle = "Are you sure RESET the game?"
+                    alertMessage = "Please notice you will lose all of dice history if reset the game."
+                    isShowAlert = true
+                }, label: {
+                    Image(systemName: "gobackward")
+                }),
+                trailing: Button {
+                    startRollingDice()
+                } label: {
+                    HStack {
+                        Image(systemName: "dice.fill")
+                        Text("Start")
+                            .font(.title2)
+                            .bold()
+                    }
+                })
             .navigationBarTitle(Text("Roll Dice"))
+            .alert(isPresented: $isShowAlert) {
+                Alert(
+                    title: Text(alertTitle),
+                    message: Text(alertMessage),
+                    primaryButton: Alert.Button.default(Text("Reset"), action: {
+                        resetGame()
+                    }),
+                    secondaryButton: Alert.Button.cancel(Text("Cancel")))
+            }
         }
     }
     
@@ -75,6 +96,18 @@ struct RollDiceView: View {
         diceHistory.results[selectedDiceSide, default: [Int]()].append(diceNumber)
         
         isShowDice = true
+    }
+    
+    private func resetGame() {
+        diceHistory.results = [Int: [Int]]()
+        
+        isShowAlert = false
+        alertTitle = ""
+        alertMessage = ""
+        
+        isShowDice = true
+        diceNumber = 0
+        diceType = 0
     }
 }
 
