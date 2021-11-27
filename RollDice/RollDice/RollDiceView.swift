@@ -21,6 +21,14 @@ struct RollDiceView: View {
         diceTypeList[diceType]
     }
     
+    var totalPoint: Int {
+        diceHistory.results.values.reduce(into: 0) { point, resultArr in
+            point += resultArr.reduce(into: 0, { temp, next in
+                temp += next
+            })
+        }
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -34,6 +42,14 @@ struct RollDiceView: View {
                 }
 
                 if isShowDice {
+                    Section(header: Text("Total Rolled Point")) {
+                        HStack {
+                            Text("Your Point is:")
+                                .bold()
+                            Text("\(totalPoint)")
+                        }
+                    }
+                    
                     Section(header: Text("Dices")) {
                         Text("\(diceNumber)")
                             .frame(width: 300, height: 300, alignment: .center)
