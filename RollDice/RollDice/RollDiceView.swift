@@ -94,10 +94,12 @@ struct RollDiceView: View {
     
     private func startRollingDice() {
         triggerHaptic()
-        
-        diceNumber = Int.random(in: 1...selectedDiceSide)
-        diceHistory.addNewRecord(side: selectedDiceSide, result: diceNumber)
-        
+
+        showRandomVariousDice {
+            diceNumber = Int.random(in: 1...selectedDiceSide)
+            diceHistory.addNewRecord(side: selectedDiceSide, result: diceNumber)
+        }
+
         isShowDice = true
     }
     
@@ -116,6 +118,37 @@ struct RollDiceView: View {
     private func triggerHaptic() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
+    }
+    
+    private func showRandomVariousDice(completion: @escaping () -> Void) {
+        var start = 0.0
+        var step = 0.001
+        let end = 3.0
+        while true {
+            start += step
+            guard start <= end else { break }
+            
+            step *= 2
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + TimeInterval(start)) {
+                diceNumber = Int.random(in: 1...selectedDiceSide)
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            completion()
+        }
+        
+        // Timer
+//        var count = 0
+//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+//            count += 1
+//            diceNumber = Int.random(in: 1...selectedDiceSide)
+//
+//            if count == 20 {
+//                timer.invalidate()
+//            }
+//        }
     }
 }
 
