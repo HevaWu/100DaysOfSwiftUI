@@ -25,7 +25,7 @@ struct RollDiceView: View {
     }
     
     var totalPoint: Int {
-        diceHistory.results.values.reduce(into: 0) { point, resultArr in
+        diceHistory.records.values.reduce(into: 0) { point, resultArr in
             point += resultArr.reduce(into: 0, { temp, next in
                 temp += next
             })
@@ -93,13 +93,13 @@ struct RollDiceView: View {
     
     private func startRollingDice() {
         diceNumber = Int.random(in: 1...selectedDiceSide)
-        diceHistory.results[selectedDiceSide, default: [Int]()].append(diceNumber)
+        diceHistory.addNewRecord(side: selectedDiceSide, result: diceNumber)
         
         isShowDice = true
     }
     
     private func resetGame() {
-        diceHistory.results = [Int: [Int]]()
+        diceHistory.clearAllData()
         
         isShowAlert = false
         alertTitle = ""

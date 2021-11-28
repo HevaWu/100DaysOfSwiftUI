@@ -13,8 +13,8 @@ struct UserHistoryView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(diceHistory.results.keys.sorted(), id: \.self) { diceSide in
-                    if let diceResults = diceHistory.results[diceSide] {
+                ForEach(diceHistory.records.keys.sorted(), id: \.self) { diceSide in
+                    if let diceResults = diceHistory.records[diceSide] {
                         Section(header: Text("\(diceSide)-sided")) {
                             ForEach(diceResults, id: \.self) { diceResult in
                                 Text("\(diceResult)")

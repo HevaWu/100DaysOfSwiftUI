@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    var diceHistory = DiceHistory()
+    @ObservedObject var diceHistory = DiceHistory()
     
     @State private var selectedTab = 0
     
@@ -29,7 +29,12 @@ struct ContentView: View {
                 }
                 .tag(1)
         }
+        .onAppear(perform: loadDataFromDataStore)
         .environmentObject(diceHistory)
+    }
+    
+    private func loadDataFromDataStore() {
+        diceHistory.loadData()
     }
 }
 

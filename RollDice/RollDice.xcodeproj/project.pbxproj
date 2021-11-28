@@ -16,6 +16,8 @@
 		D5758970275113EC003B7EC7 /* RollDiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575896F275113EC003B7EC7 /* RollDiceView.swift */; };
 		D57589722751157F003B7EC7 /* DiceHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57589712751157F003B7EC7 /* DiceHistory.swift */; };
 		D575897427511747003B7EC7 /* UserHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575897327511747003B7EC7 /* UserHistoryView.swift */; };
+		D58037892753C4E6004F30D1 /* DiceRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58037872753C4E6004F30D1 /* DiceRecord+CoreDataClass.swift */; };
+		D580378A2753C4E6004F30D1 /* DiceRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58037882753C4E6004F30D1 /* DiceRecord+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		D575896F275113EC003B7EC7 /* RollDiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollDiceView.swift; sourceTree = "<group>"; };
 		D57589712751157F003B7EC7 /* DiceHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceHistory.swift; sourceTree = "<group>"; };
 		D575897327511747003B7EC7 /* UserHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHistoryView.swift; sourceTree = "<group>"; };
+		D58037872753C4E6004F30D1 /* DiceRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiceRecord+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D58037882753C4E6004F30D1 /* DiceRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiceRecord+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 		D575895B27511169003B7EC7 /* RollDice */ = {
 			isa = PBXGroup;
 			children = (
+				D58037872753C4E6004F30D1 /* DiceRecord+CoreDataClass.swift */,
+				D58037882753C4E6004F30D1 /* DiceRecord+CoreDataProperties.swift */,
 				D575895C27511169003B7EC7 /* RollDiceApp.swift */,
 				D575895E27511169003B7EC7 /* ContentView.swift */,
 				D575896F275113EC003B7EC7 /* RollDiceView.swift */,
@@ -153,8 +159,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D57589662751116D003B7EC7 /* Persistence.swift in Sources */,
+				D58037892753C4E6004F30D1 /* DiceRecord+CoreDataClass.swift in Sources */,
 				D575895F27511169003B7EC7 /* ContentView.swift in Sources */,
 				D575895D27511169003B7EC7 /* RollDiceApp.swift in Sources */,
+				D580378A2753C4E6004F30D1 /* DiceRecord+CoreDataProperties.swift in Sources */,
 				D5758970275113EC003B7EC7 /* RollDiceView.swift in Sources */,
 				D57589692751116D003B7EC7 /* RollDice.xcdatamodeld in Sources */,
 				D57589722751157F003B7EC7 /* DiceHistory.swift in Sources */,
