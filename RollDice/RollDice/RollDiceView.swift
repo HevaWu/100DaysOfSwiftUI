@@ -43,7 +43,7 @@ struct RollDiceView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
-
+                
                 if isShowDice {
                     Section(header: Text("Total Rolled Point")) {
                         HStack {
@@ -68,9 +68,9 @@ struct RollDiceView: View {
                 }, label: {
                     Image(systemName: "gobackward")
                 }),
-                trailing: Button {
+                trailing: Button(action: {
                     startRollingDice()
-                } label: {
+                }, label: {
                     HStack {
                         Image(systemName: "dice.fill")
                         Text("Start")
@@ -78,6 +78,7 @@ struct RollDiceView: View {
                             .bold()
                     }
                 })
+            )
             .navigationBarTitle(Text("Roll Dice"))
             .alert(isPresented: $isShowAlert) {
                 Alert(
@@ -92,6 +93,8 @@ struct RollDiceView: View {
     }
     
     private func startRollingDice() {
+        triggerHaptic()
+        
         diceNumber = Int.random(in: 1...selectedDiceSide)
         diceHistory.addNewRecord(side: selectedDiceSide, result: diceNumber)
         
@@ -108,6 +111,11 @@ struct RollDiceView: View {
         isShowDice = true
         diceNumber = 0
         diceType = 0
+    }
+    
+    private func triggerHaptic() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
     }
 }
 
