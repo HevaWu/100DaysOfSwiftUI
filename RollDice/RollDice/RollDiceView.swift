@@ -60,14 +60,15 @@ struct RollDiceView: View {
                 }
             }
             .navigationBarItems(
-                leading: Button(action: {
-                    // show reset game alert
-                    alertTitle = "Are you sure RESET the game?"
-                    alertMessage = "Please notice you will lose all of dice history if reset the game."
-                    isShowAlert = true
-                }, label: {
-                    Image(systemName: "gobackward")
-                }),
+                // TODO: Fix reset function later
+//                leading: Button(action: {
+//                    // show reset game alert
+//                    alertTitle = "Are you sure RESET the game?"
+//                    alertMessage = "Please notice you will lose all of dice history if reset the game."
+//                    isShowAlert = true
+//                }, label: {
+//                    Image(systemName: "gobackward")
+//                }),
                 trailing: Button(action: {
                     startRollingDice()
                 }, label: {

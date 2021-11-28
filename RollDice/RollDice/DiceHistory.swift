@@ -30,6 +30,7 @@ class DiceHistory: ObservableObject {
                     for record in savedRecords {
                         self.records[Int(record.side), default: [Int]()].append(Int(record.result))
                     }
+                    
                 } catch {
                     print("[DiceHisotry] Load data failed.")
                 }
@@ -58,9 +59,13 @@ class DiceHistory: ObservableObject {
             guard let savedRecords = self?.savedRecords else { return }
             do {
                 for record in savedRecords {
-                    moc.delete(record)
+                    let _moc = record.managedObjectContext ?? moc
+                    _moc.delete(record)
+                    try _moc.save()
                 }
-                try moc.save()
+//                try moc.save()
+                
+                self?.loadData()
             } catch {
                 print("[DiceHistory] Clear All Data failed.")
             }

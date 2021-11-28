@@ -2,7 +2,7 @@
 //  DiceRecord+CoreDataProperties.swift
 //  RollDice
 //
-//  Created by He Wu on 2021/11/28.
+//  Created by He Wu on 2021/11/29.
 //
 //
 
@@ -18,6 +18,7 @@ extension DiceRecord {
 
     @NSManaged public var result: Int16
     @NSManaged public var side: Int16
+    @NSManaged public var id: UUID?
 
 }
 
