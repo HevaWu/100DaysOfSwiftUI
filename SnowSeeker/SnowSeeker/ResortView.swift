@@ -46,7 +46,12 @@ struct ResortView: View {
                     Text("Facilities")
                         .font(.headline)
                     
-                    Text(ListFormatter.localizedString(byJoining: resort.facilities))
+                    HStack {
+                        ForEach(resort.facilities, id: \.self) { facility in
+                            Facility.icon(for: facility)
+                                .font(.title)
+                        }
+                    }
                         .padding(.vertical)
                 }
                 .padding(.horizontal)
