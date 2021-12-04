@@ -20,6 +20,8 @@
 		D58037B22757AEE6004F30D1 /* ResortDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58037B12757AEE6004F30D1 /* ResortDetailsView.swift */; };
 		D58037B42759004C004F30D1 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58037B32759004C004F30D1 /* Facility.swift */; };
 		D58037B62759049D004F30D1 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58037B52759049D004F30D1 /* Favorites.swift */; };
+		D58037B8275B85AE004F30D1 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58037B7275B85AE004F30D1 /* SortType.swift */; };
+		D58037BA275B860B004F30D1 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58037B9275B860B004F30D1 /* FilterType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		D58037B12757AEE6004F30D1 /* ResortDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResortDetailsView.swift; sourceTree = "<group>"; };
 		D58037B32759004C004F30D1 /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		D58037B52759049D004F30D1 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		D58037B7275B85AE004F30D1 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
+		D58037B9275B860B004F30D1 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				D5803797275506F8004F30D1 /* SnowSeekerApp.swift */,
 				D58037A72757A8A4004F30D1 /* resorts.json */,
 				D5803799275506F8004F30D1 /* ContentView.swift */,
+				D58037B7275B85AE004F30D1 /* SortType.swift */,
+				D58037B9275B860B004F30D1 /* FilterType.swift */,
 				D58037AF2757AE9D004F30D1 /* SkiDetailsView.swift */,
 				D58037B12757AEE6004F30D1 /* ResortDetailsView.swift */,
 				D58037AD2757AD46004F30D1 /* ResortView.swift */,
@@ -170,11 +176,13 @@
 				D58037B22757AEE6004F30D1 /* ResortDetailsView.swift in Sources */,
 				D58037B62759049D004F30D1 /* Favorites.swift in Sources */,
 				D58037B42759004C004F30D1 /* Facility.swift in Sources */,
+				D58037B8275B85AE004F30D1 /* SortType.swift in Sources */,
 				D580379A275506F8004F30D1 /* ContentView.swift in Sources */,
 				D58037AA2757A8BC004F30D1 /* Bundle+Decodable.swift in Sources */,
 				D58037AE2757AD46004F30D1 /* ResortView.swift in Sources */,
 				D58037A62757A7BB004F30D1 /* Resort.swift in Sources */,
 				D5803798275506F8004F30D1 /* SnowSeekerApp.swift in Sources */,
+				D58037BA275B860B004F30D1 /* FilterType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

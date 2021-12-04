@@ -10,11 +10,25 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var favorites = Favorites()
     
+    @State private var selectedSortType: SortType = .original
+    
+    var currentOnShowResorts: [Resort] {
+        switch selectedSortType {
+        case .original:
+            return resorts
+        case .alphabetical:
+            return resorts.sorted { $0.name < $1.name }
+        case .country:
+            return resorts.sorted { $0.country < $1.country}
+        }
+    }
+    
+    let sortType: [SortType] = [.original, .alphabetical, .country]
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
         
     var body: some View {
         NavigationView {
-            List(resorts) { resort in
+            List(currentOnShowResorts) { resort in
                 NavigationLink(destination: {
                     ResortView(resort: resort)
                 }, label: {
@@ -48,6 +62,26 @@ struct ContentView: View {
                 })
             }
             .navigationTitle("Resorts")
+            .navigationBarItems(
+                leading: HStack {
+                    Text("Sort By")
+                        .foregroundColor(.blue)
+                    
+                    Picker(
+                        selection: $selectedSortType,
+                        content: {
+                            ForEach(sortType, id: \.self) { type in
+                                Button(type.rawValue) {
+                                    selectedSortType = type
+                                }
+                            }
+                        },
+                        label: {
+                            Text("Sort By")
+                        }
+                    )
+                }
+            )
             
             WelcomeView()
         }
