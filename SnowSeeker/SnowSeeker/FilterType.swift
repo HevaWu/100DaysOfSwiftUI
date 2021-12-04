@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum FilterType {
-    case none
+enum FilterType: String {
+    case none = "None"
     
-    case country(String)
-    case size(Int)
-    case price(Int)
+    case country = "Country"
+    case size = "Size"
+    case price = "Price"
 }
